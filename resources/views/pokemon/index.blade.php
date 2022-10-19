@@ -28,5 +28,5 @@
             @endforeach
         </tbody>
     </table>
-    {{!! $pokemon->links() !!}}
+    {!! $pokemon->links() !!}
 @endsection

@@ -18,19 +18,6 @@ class PokemonSeeder extends Seeder
     {
         $csvFile = fopen(base_path("database\data\Pokemons.csv"), "r");
 
-        /*
-,
-            [
-                "name" => "Psyduck",
-                "hp" => 50,
-                "attack" => 52,
-                "defense" => 48,
-                "special_attack" => 65,
-                "special_defense" => 50,
-                "speed" => 55,
-            ]
-        */
-
         $firstRow = true;
         while (($data = fgetcsv($csvFile, 1000, ",")) !== false) {
             var_dump($data);
