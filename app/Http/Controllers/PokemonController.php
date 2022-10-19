@@ -14,9 +14,7 @@ class PokemonController extends Controller
      */
     public function index()
     {
-        $pokemon = Pokemon::all()
-            ->latest()
-            ->paginate(5);
+        $pokemon = Pokemon::latest()->paginate(5);
 
         return view("pokemon.index", compact("pokemon"))->with(
             "i",
