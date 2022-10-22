@@ -18,4 +18,9 @@ class Pokemon extends Model
         "special_defense",
         "speed",
     ];
+
+    public function nameWithFirstLetterCapitalized()
+    {
+        return ucfirst($this->name);
+    }
 }
