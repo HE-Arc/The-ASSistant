@@ -1,6 +1,6 @@
 @extends("layout.app")
 @section("content")
-<h1>Attaque [WIP]</h1>
+<h1>En attaque [WIP]</h1>
 <div style="column-count: 2;">
     <table class="table">
         <thead>

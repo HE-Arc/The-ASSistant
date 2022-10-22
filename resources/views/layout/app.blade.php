@@ -15,7 +15,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ route('pokemon.index') }}">The ASSistant</a>
+            <a class="navbar-brand" href="{{ route('home') }}">The ASSistant</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -24,17 +24,24 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('pokemon.index') }}">Pokemon
-                            <!-- TODO add pokemon list page -->
-                            list
+                        <a class="nav-link active" aria-current="page" href="{{ route('pokemon.index') }}">
+                            Pokédex
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('pokemon.index') }}">Compare</a>
-                        <!-- TODO add compare route-->
+                        <a class="nav-link" href="{{ route('attack') }}">
+                            En attaque
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('pokemon.create') }}">Create your own</a>
+                        <a class="nav-link" href="{{ route('defense') }}">
+                            En défense
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('about') }}">
+                            À propos
+                        </a>
                     </li>
                 </ul>
             </div>
