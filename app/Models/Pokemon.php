@@ -23,4 +23,8 @@ class Pokemon extends Model
     {
         return $this->belongsToMany(Types::class);
     }
+    public function nameWithFirstLetterCapitalized()
+    {
+        return ucfirst($this->name);
+    }
 }

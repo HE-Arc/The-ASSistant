@@ -1,84 +1,99 @@
 @extends('layout.app')
 
 @section('content')
-<h1>Pokemons</h1>
+<h1>Pokédex</h1>
 @foreach ($pokemon as $pk)
-    <div class="row mt-12">
+    <div>
         <div class="card">
             <div class="card-header">
-                {{$pk->name}}
+                {{$pk->nameWithFirstLetterCapitalized()}}
             </div>
             <div class="card-body">
-                <div class="form-row">
-                    <div class="form-group">
+                <div class="row">
+                    <div>
                         image
                     </div>
-                    <div class="form-col">
-                        <div class="form-row">
+                    <div class="col">
+                        <div class="fw-bolder">
                             Types
                         </div>
-                        <div class="form-row">
+                        <div>
                             Type 1
                         </div>
-                        <div class="form-row">
+                        <div>
                             Type 2
                         </div>
                     </div>
-                    <div class="form-col">
-                        <div class="form-row">
+                    <div class="col text-right">
+                        <div>
                             PV
                         </div>
-                        <div class="form-row">
+                        <div>
                             Attaque
                         </div>
-                        <div class="form-row">
+                        <div>
                             Défense
                         </div>
-                        <div class="form-row">
+                        <div>
                             Attaque Spé
                         </div>
-                        <div class="form-row">
+                        <div>
                             Défense Spé
                         </div>
-                        <div class="form-row">
+                        <div>
                             Vitesse
                         </div>
                     </div>
-                    <div class="form-col">
-                        <div class="form-row">
+                    <div class="col">
+                        <div>
                             {{$pk->hp}}
                         </div>
-                        <div class="form-row">
+                        <div>
                             {{$pk->attack}}
                         </div>
-                        <div class="form-row">
+                        <div>
                             {{$pk->defense}}
                         </div>
-                        <div class="form-row">
+                        <div>
                             {{$pk->special_attack}}
                         </div>
-                        <div class="form-row">
+                        <div>
                             {{$pk->special_defense}}
                         </div>
-                        <div class="form-row">
+                        <div>
                             {{$pk->speed}}
                         </div>
                     </div>
-                    <div class="form-col">
-                        <div class="form-row">
-                            Pokepedia
+                    <div class="col">
+                        <div>
+                            <a class="btn btn-info" href="https://www.pokepedia.fr/{{$pk->nameWithFirstLetterCapitalized()}}">Poképédia</a>
                         </div>
-                        <div class="form-row">
-                            En attaque
+                        <br>
+                        <div>
+                            <a class="btn btn-info" href="{{ route('attack') }}">En attaque</a>
                         </div>
-                        <div class="form-row">
-                            En défense
+                        <br>
+                        <div>
+                            <a class="btn btn-info" href="{{ route('defense') }}">En défense</a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div>
+                            <a class="btn btn-warning" href="">Editer</a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div>
+                            <a class="btn btn-danger" href="">X Supprimer</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <br>
     </div>
 @endforeach
 {!! $pokemon->links() !!}
+
+<a href="{{ route('pokemon.create') }}" class="btn btn-info" style="margin-top: 15px;">+ Nouveau Pokémon</a>
 @endsection
