@@ -42,6 +42,15 @@ class PokemonController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            "name" => "required",
+            "hp" => "required|integer|gte:0|lte:255",
+            "attack" => "required|integer|gte:0|lte:255",
+            "defense" => "required|integer|gte:0|lte:255",
+            "special_attack" => "required|integer|gte:0|lte:255",
+            "special_defense" => "required|integer|gte:0|lte:255",
+            "speed" => "required|integer|gte:0|lte:255",
+        ]);
         $pokemon = new Pokemon();
         $pokemon->name = $request->name;
         $pokemon->hp = $request->hp;
@@ -51,7 +60,9 @@ class PokemonController extends Controller
         $pokemon->special_defense = $request->special_defense;
         $pokemon->speed = $request->speed;
         $pokemon->save();
-        return redirect()->route("pokemon.index");
+        return redirect()
+            ->route("pokemon.index")
+            ->with("success", "Pokemon created successfully.");
     }
 
     /**
