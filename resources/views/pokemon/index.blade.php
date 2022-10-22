@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('content')
-<h1>Pokemons</h1>
+<h1>Pokédex</h1>
 @foreach ($pokemon as $pk)
     <div>
         <div class="card">
@@ -66,6 +66,10 @@
                     </div>
                     <div class="col">
                         <div>
+                            <a class="btn btn-info" href="https://www.pokepedia.fr/{{$pk->nameWithFirstLetterCapitalized()}}">Poképédia</a>
+                        </div>
+                        <br>
+                        <div>
                             <a class="btn btn-info" href="{{ route('attack') }}">En attaque</a>
                         </div>
                         <br>
@@ -73,12 +77,23 @@
                             <a class="btn btn-info" href="{{ route('defense') }}">En défense</a>
                         </div>
                     </div>
+                    <div class="col">
+                        <div>
+                            <a class="btn btn-warning" href="">Editer</a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div>
+                            <a class="btn btn-danger" href="">X Supprimer</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <br>
     </div>
 @endforeach
 {!! $pokemon->links() !!}
 
-<a href="{{ route('pokemon.create') }}" class="btn btn-info" style="margin-top: 15px;">Nouveau Pokémon</a>
+<a href="{{ route('pokemon.create') }}" class="btn btn-info" style="margin-top: 15px;">+ Nouveau Pokémon</a>
 @endsection
