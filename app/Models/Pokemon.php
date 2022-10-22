@@ -18,4 +18,9 @@ class Pokemon extends Model
         "special_defense",
         "speed",
     ];
+
+    public function types()
+    {
+        return $this->belongsToMany(Types::class);
+    }
 }
