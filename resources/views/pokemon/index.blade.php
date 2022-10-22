@@ -66,10 +66,11 @@
                     </div>
                     <div class="col">
                         <div>
-                            <a class="btn btn-info" href="">En attaque</a>
+                            <a class="btn btn-info" href="{{ route('attack') }}">En attaque</a>
                         </div>
+                        <br>
                         <div>
-                            <a class="btn btn-info" href="">En défense</a>
+                            <a class="btn btn-info" href="{{ route('defense') }}">En défense</a>
                         </div>
                     </div>
                 </div>
@@ -79,5 +80,5 @@
 @endforeach
 {!! $pokemon->links() !!}
 
-<a href="{{ route('pokemon.create') }}" class="btn btn-info">Nouveau Pokémon</a>
+<a href="{{ route('pokemon.create') }}" class="btn btn-info" style="margin-top: 15px;">Nouveau Pokémon</a>
 @endsection
