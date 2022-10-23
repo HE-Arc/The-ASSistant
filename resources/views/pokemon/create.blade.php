@@ -51,7 +51,7 @@
                                             min="1" max="255">
                                     </div>
                                     <div class="form-group col-6">
-                                        <label for="inputTypeOne">Type</label>
+                                        <label for="inputTypeOne">Type 1</label>
                                         <select name="type_one" id="inputTypeOne" class="form-select"
                                             aria-label="Pokemon type one">
                                             @foreach ($types as $type)
@@ -60,7 +60,7 @@
                                         </select>
                                     </div>
                                     <div class="form-group col-6">
-                                        <label for="inputTypeTwo">Type</label>
+                                        <label for="inputTypeTwo">Type 2</label>
                                         <select name="type_two" id="inputTypeTwo" class="form-select"
                                             aria-label="Pokemon type two">
                                             <option value="-1">None</option>
@@ -69,8 +69,16 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger form-group col-12">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                                 </div>
-
 
                                 <button type="submit" class="btn btn-primary mt-3">Envoyer</button>
                             </div>
