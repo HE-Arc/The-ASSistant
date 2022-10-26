@@ -73,7 +73,9 @@ class PokemonController extends Controller
      */
     public function show($id)
     {
-        //
+        return view("pokemon.show", [
+            "pokemon" => Pokemon::find($id),
+        ]);
     }
 
     /**
@@ -84,7 +86,10 @@ class PokemonController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view("pokemon.edit", [
+            "pokemon" => Pokemon::find($id),
+            "types" => Types::all(),
+        ]);
     }
 
     /**
@@ -96,7 +101,19 @@ class PokemonController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            "name" => "required",
+            "hp" => "required|integer|gte:0|lte:255",
+            "attack" => "required|integer|gte:0|lte:255",
+            "defense" => "required|integer|gte:0|lte:255",
+            "special_attack" => "required|integer|gte:0|lte:255",
+            "special_defense" => "required|integer|gte:0|lte:255",
+            "speed" => "required|integer|gte:0|lte:255",
+        ]);
+        Pokemon::findOrfail($id)->update($request->all());
+        return redirect()
+            ->route("pokemon.index")
+            ->with("success", "Pokemon updated successfully");
     }
 
     /**
