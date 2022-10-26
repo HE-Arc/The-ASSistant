@@ -84,9 +84,14 @@
                             </div>
                         </div>
                         <div class="col">
-                            <div>
-                                <a class="btn btn-danger" href="">X Supprimer</a>
-                            </div>
+                            <form action="{{ route('pokemon.destroy', $pk->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">X Supprimer</button>
+                            </form>
+                            {{-- <div>
+                                <a class="btn btn-danger" href="{{ route('pokemon.destroy', $pk->id) }}">X Supprimer</a>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
