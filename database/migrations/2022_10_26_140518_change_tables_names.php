@@ -13,12 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table("pokemon", function (Blueprint $table) {
-            $table
-                ->string("name")
-                ->unique()
-                ->change();
-        });
+        Schema::rename('typesdamage', 'damage_types');
+        Schema::rename('pokemontypes', 'pokemon_types');
     }
 
     /**
@@ -28,8 +24,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table("pokemon", function (Blueprint $table) {
-            $table->dropUnique("name");
-        });
+        Schema::rename('damage_types', 'typesdamage');
+        Schema::rename('pokemon_types', 'pokemontypes');
     }
 };

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pokemon;
-use App\Models\Types;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class PokemonController extends Controller
@@ -30,7 +30,7 @@ class PokemonController extends Controller
      */
     public function create()
     {
-        $types = Types::all();
+        $types = Type::all();
         return view("pokemon.create", compact("types"));
     }
 
@@ -88,7 +88,7 @@ class PokemonController extends Controller
     {
         return view("pokemon.edit", [
             "pokemon" => Pokemon::find($id),
-            "types" => Types::all(),
+            "types" => Type::all(),
         ]);
     }
 
