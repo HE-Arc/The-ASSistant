@@ -1,0 +1,99 @@
+:root {
+    --clr-body-bg: hsl(0 0% 90%);
+    --clr-card-bg: hsl(0 0% 100%);
+    --clr-text: hsl(0 0% 0%);
+    --clr-heading: hsl(0 0% 15%);
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    background: var(--clr-body-bg);
+    color: var(--clr-text);
+}
+
+.card {
+    padding: 1rem;
+    background-color: var(--clr-card-bg);
+    border-block-start: 0.5rem solid;
+    border-radius: 0.5rem;
+}
+
+.navbar-brand,
+h1,
+h2,
+h3 {
+    color: var(--clr-heading);
+    line-height: 1.1;
+}
+
+.theme-selector>fieldset {
+    border: 0;
+    display: flex;
+    gap: 2rem;
+    width: fit-content;
+    background: hsl(0, 0%, 60%);
+    padding: 1rem 3rem;
+    margin-inline: auto;
+    border-radius: 0 0 1rem 1rem;
+}
+
+.theme-selector input[type="radio"] {
+    appearance: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    outline: 3px solid var(--radio-color, currentColor);
+    outline-offset: 3px;
+    border-radius: 50%;
+}
+
+.theme-selector input[type="radio"]:checked {
+    background-color: var(--radio-color);
+}
+
+.theme-selector input[type="radio"]#theme-light {
+    --radio-color: white;
+}
+
+.theme-selector input[type="radio"]#theme-grey {
+    --radio-color: rgb(88, 88, 88);
+}
+
+.theme-selector input[type="radio"]#theme-dark {
+    --radio-color: rgb(37, 37, 37);
+}
+
+/* So that it works on firefox,
+    the classes and the :root:has() have to be separate otherwise
+    the page won't update with the new styles */
+/* Theme selctor largely based off of this Kevin Powell video
+    https://www.youtube.com/watch?v=fyuao3G-2qg */
+.theme-grey {
+    --clr-body-bg: hsl(0, 0%, 28%);
+    --clr-card-bg: hsl(0, 0%, 40%);
+    --clr-text: hsl(0, 5%, 92%);
+    --clr-heading: hsl(0, 0%, 68%);
+}
+
+:root:has(#theme-grey:checked) {
+    --clr-body-bg: hsl(0, 0%, 28%);
+    --clr-card-bg: hsl(0, 0%, 40%);
+    --clr-text: hsl(0, 5%, 92%);
+    --clr-heading: hsl(0, 0%, 68%);
+}
+
+.theme-dark {
+    --clr-body-bg: hsl(0, 0%, 15%);
+    --clr-card-bg: hsl(0, 0%, 22%);
+    --clr-text: hsl(0, 0%, 85%);
+    --clr-heading: hsl(0, 0%, 60%);
+}
+
+:root:has(#theme-dark:checked) {
+    --clr-body-bg: hsl(0, 0%, 15%);
+    --clr-card-bg: hsl(0, 0%, 22%);
+    --clr-text: hsl(0, 0%, 85%);
+    --clr-heading: hsl(0, 0%, 60%);
+}

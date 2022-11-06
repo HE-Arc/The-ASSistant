@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>The ASSistant</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url('/css/app.css') }}">
+    <script type="text/javascript" src="{{ url('/js/themeChanger.js') }}"></script>
 </head>
 
 <body>
@@ -63,6 +66,19 @@
             </div>
         </div>
     </nav>
+    <aside class="container-fluid right-aligned">
+        <form action="" class="theme-selector">
+            <fieldset>
+                <legend class="sr-only">Selection de thème</legend>
+                <label for="theme" class="sr-only">Thème clair</label>
+                <input type="radio" name="theme" id="theme-light" checked>
+                <label for="theme" class="sr-only">Thème gris</label>
+                <input type="radio" name="theme" id="theme-grey">
+                <label for="theme" class="sr-only">Thème sombre</label>
+                <input type="radio" name="theme" id="theme-dark">
+            </fieldset>
+        </form>
+    </aside>
     <div class="container mt-3">
         @if ($message = Session::get('success'))
             <div class="alert alert-success">

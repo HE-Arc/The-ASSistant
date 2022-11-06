@@ -50,16 +50,18 @@ class PokemonController extends Controller
             "special_attack" => "required|integer|gte:0|lte:255",
             "special_defense" => "required|integer|gte:0|lte:255",
             "speed" => "required|integer|gte:0|lte:255",
+            "type_one" => "nullable|exists:types,id",
+            "type_two" => "nullable",
         ]);
         $pokemon = new Pokemon();
-        $pokemon->name = $request->name;
-        $pokemon->hp = $request->hp;
-        $pokemon->attack = $request->attack;
-        $pokemon->defense = $request->defense;
-        $pokemon->special_attack = $request->special_attack;
-        $pokemon->special_defense = $request->special_defense;
-        $pokemon->speed = $request->speed;
-        $pokemon->save();
+        // $pokemon->name = $request->name;
+        // $pokemon->hp = $request->hp;
+        // $pokemon->attack = $request->attack;
+        // $pokemon->defense = $request->defense;
+        // $pokemon->special_attack = $request->special_attack;
+        // $pokemon->special_defense = $request->special_defense;
+        // $pokemon->speed = $request->speed;
+        $pokemon->save($request->all());
         return redirect()
             ->route("pokemon.index")
             ->with("success", "Pokemon created successfully.");
