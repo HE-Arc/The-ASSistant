@@ -9,6 +9,7 @@ class Pokemon extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
     protected $fillable = [
         "name",
         "hp",

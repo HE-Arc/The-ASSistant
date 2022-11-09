@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pokemon;
+use App\Models\PokemonTypes;
 use App\Models\Types;
 use Illuminate\Http\Request;
 
@@ -43,25 +44,37 @@ class PokemonController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "name" => "required",
+            "name" => "required|string",
             "hp" => "required|integer|gte:0|lte:255",
             "attack" => "required|integer|gte:0|lte:255",
             "defense" => "required|integer|gte:0|lte:255",
             "special_attack" => "required|integer|gte:0|lte:255",
             "special_defense" => "required|integer|gte:0|lte:255",
             "speed" => "required|integer|gte:0|lte:255",
-            "type_one" => "nullable|exists:types,id",
+            "type_one" => "exists:types,id",
             "type_two" => "nullable",
         ]);
         $pokemon = new Pokemon();
-        // $pokemon->name = $request->name;
-        // $pokemon->hp = $request->hp;
-        // $pokemon->attack = $request->attack;
-        // $pokemon->defense = $request->defense;
-        // $pokemon->special_attack = $request->special_attack;
-        // $pokemon->special_defense = $request->special_defense;
-        // $pokemon->speed = $request->speed;
-        $pokemon->save($request->all());
+        $pokemon->name = $request->name;
+        $pokemon->hp = $request->hp;
+        $pokemon->attack = $request->attack;
+        $pokemon->defense = $request->defense;
+        $pokemon->special_attack = $request->special_attack;
+        $pokemon->special_defense = $request->special_defense;
+        $pokemon->speed = $request->speed;
+        $pokemon->save();
+
+        $pokemonTypes = new PokemonTypes();
+        $id = $pokemon->id;
+        $pokemonTypes->pokemon_id = $id;
+        $pokemonTypes->type_one = $request->type_one;
+        $pokemonTypes->save();
+
+        $pokemonTypes = new PokemonTypes();
+        $pokemonTypes->pokemon_id = $id;
+        $pokemonTypes->type_two = $request->type_two;
+        $pokemonTypes->save();
+        //$pokemon->save($request->all());
         return redirect()
             ->route("pokemon.index")
             ->with("success", "Pokemon created successfully.");

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url('/css/app.css') }}">
+    <script type="text/javascript" src="{{ url('/js/cookieManager.js') }}"></script>
     <script type="text/javascript" src="{{ url('/js/themeChanger.js') }}"></script>
 </head>
 
@@ -55,7 +56,7 @@
             <fieldset>
                 <legend class="sr-only">Selection de thème</legend>
                 <label for="theme" class="sr-only">Thème clair</label>
-                <input type="radio" name="theme" id="theme-light" checked>
+                <input type="radio" name="theme" id="theme-light">
                 <label for="theme" class="sr-only">Thème gris</label>
                 <input type="radio" name="theme" id="theme-grey">
                 <label for="theme" class="sr-only">Thème sombre</label>
