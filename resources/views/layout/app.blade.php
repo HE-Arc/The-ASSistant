@@ -24,22 +24,38 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
+                        @if ( Route::currentRouteName() == 'pokemon.index')
                         <a class="nav-link active" aria-current="page" href="{{ route('pokemon.index') }}">
+                        @else
+                        <a class="nav-link" href="{{ route('pokemon.index') }}">
+                        @endif
                             Pokédex
                         </a>
                     </li>
                     <li class="nav-item">
+                        @if ( Route::currentRouteName() == 'attack')
+                        <a class="nav-link active" aria-current="page" href="{{ route('attack') }}">
+                        @else
                         <a class="nav-link" href="{{ route('attack') }}">
+                        @endif
                             En attaque
                         </a>
                     </li>
                     <li class="nav-item">
+                        @if ( Route::currentRouteName() == 'defense')
+                        <a class="nav-link active" aria-current="page" href="{{ route('defense') }}">
+                        @else
                         <a class="nav-link" href="{{ route('defense') }}">
+                        @endif
                             En défense
                         </a>
                     </li>
                     <li class="nav-item">
+                        @if ( Route::currentRouteName() == 'about')
+                        <a class="nav-link active" aria-current="page" href="{{ route('about') }}">
+                        @else
                         <a class="nav-link" href="{{ route('about') }}">
+                        @endif
                             À propos
                         </a>
                     </li>
