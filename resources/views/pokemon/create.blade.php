@@ -55,7 +55,7 @@
                                         <select name="type_one" id="inputTypeOne" class="form-select"
                                             aria-label="Pokemon type one">
                                             @foreach ($types as $type)
-                                                <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                                <option value="{{ $type->id }}">{{ ucfirst($type->name) }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -65,7 +65,7 @@
                                             aria-label="Pokemon type two">
                                             <option value="-1">None</option>
                                             @foreach ($types as $type)
-                                                <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                                <option value="{{ $type->id }}">{{ ucfirst($type->name) }}</option>
                                             @endforeach
                                         </select>
                                     </div>

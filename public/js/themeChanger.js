@@ -2,14 +2,13 @@ let colorThemes = document.querySelectorAll('[name="theme"]');
 
 // store theme
 const storeTheme = function (theme) {
-    localStorage.setItem("theme", theme);
+    setCookie("theme", theme, 1)
 };
 
 // set theme when visitor returns
 const setTheme = function () {
     console.log("Set theme")
-    const activeTheme = localStorage.getItem("theme");
-    console.log("Active theme" + activeTheme);
+    const activeTheme = getCookie("theme")
     colorThemes.forEach((themeOption) => {
         if (themeOption.id === activeTheme) {
             themeOption.checked = true;
@@ -22,7 +21,6 @@ const setTheme = function () {
 window.addEventListener("DOMContentLoaded", (event) => {
     console.log("DOM loaded");
     colorThemes = document.querySelectorAll('[name="theme"]')
-    storeTheme("theme-light");
     colorThemes.forEach((themeOption) => {
         themeOption.addEventListener('input', () => {
             storeTheme(themeOption.id);
