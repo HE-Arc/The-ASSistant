@@ -7,7 +7,6 @@ const storeTheme = function (theme) {
 
 // set theme when visitor returns
 const setTheme = function () {
-    console.log("Set theme")
     const activeTheme = getCookie("theme")
     colorThemes.forEach((themeOption) => {
         if (themeOption.id === activeTheme) {
