@@ -25,6 +25,10 @@ body {
     border-radius: 0.5rem;
 }
 
+.collapse-dots {
+    color: var(--clr-text);
+}
+
 .navbar-brand,
 h1,
 h2,

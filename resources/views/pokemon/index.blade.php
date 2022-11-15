@@ -4,94 +4,120 @@
     <h1>Pokédex</h1>
     @foreach ($pokemon as $pk)
         <div>
-            <div class="card">
+            <div class="card mb-3">
                 <div class="card-header">
                     {{ $pk->nameWithFirstLetterCapitalized() }}
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div>
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <div class="img-fluid rounded-start">
                             image
                         </div>
-                        <div class="col">
-                            <div class="fw-bolder">
-                                Types
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="fw-bolder">
+                                        Types
+                                    </div>
+                                    <div>
+                                        {{ $pk->types }}
+                                    </div>
+                                    <div>
+
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <table class="table table-borderless">
+                                        <tr>
+                                            <td class="text-start">
+                                                PV
+                                            </td>
+                                            <td class="text-end">
+                                                {{ $pk->hp }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-start">
+                                                Attaque
+                                            </td>
+                                            <td class="text-end">
+                                                {{ $pk->attack }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-start">
+                                                Défense
+                                            </td>
+                                            <td class="text-end">
+                                                {{ $pk->defense }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-start">
+                                                Attaque Spé
+                                            </td>
+                                            <td class="text-end">
+                                                {{ $pk->special_attack }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-start">
+                                                Défense Spé
+                                            </td>
+                                            <td class="text-end">
+                                                {{ $pk->special_defense }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-start">
+                                                Vitesse
+                                            </td>
+                                            <td class="text-end">
+                                                {{ $pk->speed }}
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col">
+                                    {{-- <a class="btn btn-secondary w-100 m-auto collapse-dots text-center"
+                                        data-bs-toggle="collapse" role="button" aria-expanded="false"
+                                        aria-controls="collapseButtons" href="#collapseButtons{{ $pk->id }}">
+                                        &bull;&bull;&bull;
+                                    </a> --}}
+                                    {{-- <div class="collapse" id="collapseButtons{{ $pk->id }}"> --}}
+                                    <div>
+                                        <div class="w-100 my-2">
+                                            <a class="btn btn-info w-100 m-auto" target="_blank"
+                                                href="https://www.pokepedia.fr/{{ $pk->nameWithFirstLetterCapitalized() }}">Poképédia</a>
+                                        </div>
+                                        <div class="w-100 my-2">
+                                            <a class="btn btn-info w-100 m-auto" href="{{ route('attack') }}">En
+                                                attaque</a>
+                                        </div>
+                                        <div class="w-100 my-2">
+                                            <a class="btn btn-info w-100 m-auto" href="{{ route('defense') }}">En
+                                                défense</a>
+                                        </div>
+                                        <div class="w-100 my-2">
+                                            <a class="btn btn-warning w-100 m-auto"
+                                                href="{{ route('pokemon.edit', $pk->id) }}">Editer</a>
+                                        </div>
+                                        <div class="w-100 my-2">
+                                            <form action="{{ route('pokemon.destroy', $pk->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger  w-100 m-auto">X
+                                                    Supprimer</button>
+                                            </form>
+                                        </div>
+                                        {{-- <div>
+                                            <a class="btn btn-danger" href="{{ route('pokemon.destroy', $pk->id) }}">X Supprimer</a>
+                                        </div> --}}
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                Type 1
-                            </div>
-                            <div>
-                                Type 2
-                            </div>
-                        </div>
-                        <div class="col text-right">
-                            <div>
-                                PV
-                            </div>
-                            <div>
-                                Attaque
-                            </div>
-                            <div>
-                                Défense
-                            </div>
-                            <div>
-                                Attaque Spé
-                            </div>
-                            <div>
-                                Défense Spé
-                            </div>
-                            <div>
-                                Vitesse
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div>
-                                {{ $pk->hp }}
-                            </div>
-                            <div>
-                                {{ $pk->attack }}
-                            </div>
-                            <div>
-                                {{ $pk->defense }}
-                            </div>
-                            <div>
-                                {{ $pk->special_attack }}
-                            </div>
-                            <div>
-                                {{ $pk->special_defense }}
-                            </div>
-                            <div>
-                                {{ $pk->speed }}
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div>
-                                <a class="btn btn-info"
-                                    href="https://www.pokepedia.fr/{{ $pk->nameWithFirstLetterCapitalized() }}">Poképédia</a>
-                            </div>
-                            <br>
-                            <div>
-                                <a class="btn btn-info" href="{{ route('attack') }}">En attaque</a>
-                            </div>
-                            <br>
-                            <div>
-                                <a class="btn btn-info" href="{{ route('defense') }}">En défense</a>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div>
-                                <a class="btn btn-warning" href="{{ route('pokemon.edit', $pk->id) }}">Editer</a>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <form action="{{ route('pokemon.destroy', $pk->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">X Supprimer</button>
-                            </form>
-                            {{-- <div>
-                                <a class="btn btn-danger" href="{{ route('pokemon.destroy', $pk->id) }}">X Supprimer</a>
-                            </div> --}}
                         </div>
                     </div>
                 </div>
