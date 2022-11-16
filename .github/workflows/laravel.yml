@@ -17,11 +17,11 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_assistant_rsa
           sudo chmod 600 ~/.ssh/id_assistant_rsa
           echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
-          eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_motarc_rsa
+          eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_assistant_rsa
           ssh -vvv -tt -i ~/.ssh/id_assistant_rsa -p ${{secrets.ASSISTANT_SERVER_PORT}} ${{secrets.ASSISTANT_SERVER_USER}}@${{secrets.ASSISTANT_SERVER}}
           sudo git pull
           exit
         shell: bash
         env:
-          SSH_PRIVATE_KEY: ${{secrets.MOTARC_SERVER_TOKEN}}
-          SSH_KNOWN_HOSTS: ${{secrets.MOTARC_KNOWN_HOSTS}}
+          SSH_PRIVATE_KEY: ${{secrets.ASSISTANT_SERVER_TOKEN}}
+          SSH_KNOWN_HOSTS: ${{secrets.ASSISTANT_KNOWN_HOSTS}}
