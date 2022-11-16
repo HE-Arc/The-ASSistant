@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Types;
+use App\Models\Type;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -20,11 +20,12 @@ class TypesSeeder extends Seeder
         $firstRow = true;
         while (($data = fgetcsv($csvFile, 1000, ",")) !== false) {
             if (!$firstRow) {
-                Types::create([
+                Type::create([
                     "name" => $data[0],
                     "color" => $data[1],
                 ]);
             }
+            $firstRow = false;
         }
         fclose($csvFile);
     }

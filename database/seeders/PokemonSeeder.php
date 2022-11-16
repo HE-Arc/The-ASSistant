@@ -20,7 +20,6 @@ class PokemonSeeder extends Seeder
 
         $firstRow = true;
         while (($data = fgetcsv($csvFile, 1000, ",")) !== false) {
-            var_dump($data);
             if (!$firstRow) {
                 Pokemon::create([
                     "name" => $data[0],
