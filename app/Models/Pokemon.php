@@ -20,10 +20,10 @@ class Pokemon extends Model
         "speed",
     ];
 
-    public function types()
-    {
-        return $this->belongsToMany(Types::class);
-    }
+    // public function types()
+    // {
+    //     return $this->belongsToMany(Type::class);
+    // }
     public function nameWithFirstLetterCapitalized()
     {
         return ucfirst($this->name);

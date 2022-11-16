@@ -63,7 +63,7 @@ class PokemonController extends Controller
         $pokemon->special_defense = $request->special_defense;
         $pokemon->speed = $request->speed;
         $pokemon->save();
-
+        /*
         $pokemonTypes = new PokemonType();
         $id = $pokemon->id;
         $pokemonTypes->pokemon_id = $id;
@@ -74,6 +74,7 @@ class PokemonController extends Controller
         $pokemonTypes->pokemon_id = $id;
         $pokemonTypes->type_two = $request->type_two;
         $pokemonTypes->save();
+        */
         //$pokemon->save($request->all());
         return redirect()
             ->route("pokemon.index")
