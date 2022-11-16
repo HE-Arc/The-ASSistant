@@ -16,6 +16,7 @@ class PokemonController extends Controller
      */
     public function index()
     {
+        //$pokemon = Pokemon::with("types")->paginate(5);
         $pokemon = Pokemon::latest()->paginate(5);
 
         return view("pokemon.index", compact("pokemon"))->with(
@@ -63,18 +64,18 @@ class PokemonController extends Controller
         $pokemon->special_defense = $request->special_defense;
         $pokemon->speed = $request->speed;
         $pokemon->save();
-        /*
-        $pokemonTypes = new PokemonType();
-        $id = $pokemon->id;
-        $pokemonTypes->pokemon_id = $id;
-        $pokemonTypes->type_one = $request->type_one;
-        $pokemonTypes->save();
 
-        $pokemonTypes = new PokemonType();
-        $pokemonTypes->pokemon_id = $id;
-        $pokemonTypes->type_two = $request->type_two;
-        $pokemonTypes->save();
-        */
+        // $pokemonTypes = new PokemonType();
+        // $id = $pokemon->id;
+        // $pokemonTypes->pokemon_id = $id;
+        // $pokemonTypes->type_id = $request->type_one;
+        // $pokemonTypes->save();
+
+        // $pokemonTypes = new PokemonType();
+        // $pokemonTypes->pokemon_id = $id;
+        // $pokemonTypes->type_id = $request->type_two;
+        // $pokemonTypes->save();
+
         //$pokemon->save($request->all());
         return redirect()
             ->route("pokemon.index")
