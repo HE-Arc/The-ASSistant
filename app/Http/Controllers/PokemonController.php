@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pokemon;
-use App\Models\PokemonTypes;
-use App\Models\Types;
+use App\Models\PokemonType;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class PokemonController extends Controller
@@ -64,13 +64,13 @@ class PokemonController extends Controller
         $pokemon->speed = $request->speed;
         $pokemon->save();
 
-        $pokemonTypes = new PokemonTypes();
+        $pokemonTypes = new PokemonType();
         $id = $pokemon->id;
         $pokemonTypes->pokemon_id = $id;
         $pokemonTypes->type_one = $request->type_one;
         $pokemonTypes->save();
 
-        $pokemonTypes = new PokemonTypes();
+        $pokemonTypes = new PokemonType();
         $pokemonTypes->pokemon_id = $id;
         $pokemonTypes->type_two = $request->type_two;
         $pokemonTypes->save();
