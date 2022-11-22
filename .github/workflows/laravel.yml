@@ -1,0 +1,39 @@
+# Based on: https://laravel-news.com/laravel-github-actions
+
+on: push
+
+name: Laravel
+
+jobs:
+  phpunit:
+    runs-on: ubuntu-latest
+    container:
+      image: kirschbaumdevelopment/laravel-test-runner:8.1
+    
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+          MYSQL_DATABASE: the_assistant
+        ports:
+          - 3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+    - uses: actions/checkout@main
+      with:
+        fetch-depth: 1
+    
+    - name: Install composer stuff
+      run: |
+        composer install --no-scripts
+    
+    - name: Prep laravel app
+      run: |
+        cp .env.example .env
+        php artisan key:generate
+        
+    - name: Run tests
+      run: vendor/bin/phpunit tests/
+          
+      
