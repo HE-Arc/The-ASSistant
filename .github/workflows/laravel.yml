@@ -31,7 +31,10 @@ jobs:
     - name: Prep laravel app
       run: |
         cp .env.example .env
+        php artisan migrate
+        php artisan db:seed
         php artisan key:generate
+        
         
     - name: Run tests
       run: vendor/bin/phpunit tests/
