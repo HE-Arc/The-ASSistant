@@ -15,4 +15,9 @@ class Type extends Model
     {
         return $this->belongsToMany(Pokemon::class);
     }
+
+    public function nameWithFirstLetterCapitalized()
+    {
+        return ucfirst($this->name);
+    }
 }
