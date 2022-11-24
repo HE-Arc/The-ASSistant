@@ -112,20 +112,17 @@
                                                 défense</a>
                                         </div>
                                         <div class="w-100 my-2">
-                                            <a class="btn btn-warning w-100 m-auto"
-                                                href="{{ route('pokemon.edit', $pk->id) }}">Editer</a>
-                                        </div>
-                                        <div class="w-100 my-2">
-                                            <form action="{{ route('pokemon.destroy', $pk->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger  w-100 m-auto">
-                                                    Supprimer</button>
+                                            <form action="{{ route('pokemon.edit', $pk->id) }}" method="GET">
+                                            <button class="btn-warning" type="submit"><img src="images/edit.png" height ="40" width="40" /></button>
                                             </form>
                                         </div>
-                                        {{-- <div>
-                                            <a class="btn btn-danger" href="{{ route('pokemon.destroy', $pk->id) }}">X Supprimer</a>
-                                        </div> --}}
+                                        <div class="w-100 my-2 ">
+                                            <form action="{{ route('pokemon.destroy', $pk->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn-danger" type="submit"> <img src="images/delete.png" height ="40" width="40" /></button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -138,5 +135,5 @@
     @endforeach
     {!! $pokemon->links() !!}
 
-    <a href="{{ route('pokemon.create') }}" class="btn btn-info" style="margin-top: 15px;">+ Nouveau Pokémon</a>
+    <a href="{{ route('pokemon.create') }}" class="btn btn-success" style="margin-top: 15px; position:sticky; bottom:1rem;">+ Nouveau Pokémon</a>
 @endsection
