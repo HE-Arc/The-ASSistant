@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pokemon;
+use App\Models\PokemonType;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
