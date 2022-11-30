@@ -68,10 +68,10 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item">
-                        @if (Route::currentRouteName() == 'login') <!-- TODO Mettre si session connectée -->
-                            <a class="nav-link active" aria-current="page" href="#">Log out</a>
+                        @if (empty(session('username')))
+                        <a class="nav-link active" href="{{ route('login') }}">Login</a>
                         @else
-                            <a class="nav-link active" href="{{ route('login') }}">Login</a>
+                            <a class="nav-link active" aria-current="page" href="{{ route('logout') }}">Log out</a>
                         @endif
                     </li>
                 </ul>
@@ -99,6 +99,11 @@
                 <p>{{ $message }}</p>
             </div>
         @endif
+        @if ($message = Session::get('error'))
+            <div class="alert alert-danger">
+                <p>{{ $message }}</p>
+            </div>
+    @endif
         @yield('content')
     </div>
     <!-- Bootstrap JS -->

@@ -112,18 +112,20 @@
                                             <a class="btn btn-info w-100 m-auto" href="{{ route('defense') }}">En
                                                 défense</a>
                                         </div>
-                                        <div class="w-100 my-2">
-                                            <form action="{{ route('pokemon.edit', $pk->id) }}" method="GET">
-                                            <button class="btn-warning" type="submit"><img src="images/edit.png" height ="40" width="40" /></button>
-                                            </form>
-                                        </div>
-                                        <div class="w-100 my-2 ">
-                                            <form action="{{ route('pokemon.destroy', $pk->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn-danger" type="submit"> <img src="images/delete.png" height ="40" width="40" /></button>
-                                            </form>
-                                        </div>
+                                        @if (!empty(session('username')))
+                                            <div class="w-100 my-2">
+                                                <form action="{{ route('pokemon.edit', $pk->id) }}" method="GET">
+                                                <button class="btn-warning" type="submit"><img src="images/edit.png" height ="40" width="40" /></button>
+                                                </form>
+                                            </div>
+                                            <div class="w-100 my-2 ">
+                                                <form action="{{ route('pokemon.destroy', $pk->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn-danger" type="submit"> <img src="images/delete.png" height ="40" width="40" /></button>
+                                                </form>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -135,6 +137,7 @@
         </div>
     @endforeach
     {!! $pokemon->links() !!}
-
-    <a href="{{ route('pokemon.create') }}" class="btn btn-success" style="margin-top: 15px; position:sticky; bottom:1rem;">+ Nouveau Pokémon</a>
+    @if (!empty(session('username')))
+        <a href="{{ route('pokemon.create') }}" class="btn btn-success" style="margin-top: 15px; position:sticky; bottom:1rem;">+ Nouveau Pokémon</a>
+    @endif
 @endsection
