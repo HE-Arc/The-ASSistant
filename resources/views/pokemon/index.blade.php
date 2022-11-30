@@ -103,7 +103,7 @@
                                                 href="https://www.pokepedia.fr/{{ $pk->nameWithFirstLetterCapitalized() }}">Poképédia</a>
                                         </div>
                                         <div class="w-100 my-2">
-                                            <a class="btn btn-info w-100 m-auto" href="{{ route('attack') }}">En
+                                            <a class="btn btn-info w-100 m-auto" href="{{ route('attack', $pk->id) }}">En
                                                 attaque</a>
                                         </div>
                                         <div class="w-100 my-2">
@@ -118,7 +118,7 @@
                                             <form action="{{ route('pokemon.destroy', $pk->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger  w-100 m-auto">X
+                                                <button type="submit" class="btn btn-danger  w-100 m-auto">
                                                     Supprimer</button>
                                             </form>
                                         </div>

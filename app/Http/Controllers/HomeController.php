@@ -16,11 +16,6 @@ class HomeController extends Controller
         return view("about");
     }
 
-    public function attack()
-    {
-        return view("attack");
-    }
-
     public function defense()
     {
         return view("defense");

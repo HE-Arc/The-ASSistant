@@ -26,6 +26,18 @@ class PokemonController extends Controller
     }
 
     /**
+     * Display
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function attack(Request $request)
+    {
+        $pokemon = Pokemon::find(2); // value to change
+        return view("pokemon.attack", ["pokemon" => $pokemon]);
+    }
+
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

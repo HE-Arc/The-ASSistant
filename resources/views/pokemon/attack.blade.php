@@ -1,6 +1,6 @@
 @extends('layout.app')
 @section('content')
-    <h1>En attaque [WIP]</h1>
+    <h1>En attaque</h1>
     <div style="column-count: 2;">
         <table class="table">
             <thead>
@@ -10,6 +10,7 @@
             </thead>
             <tbody>
                 <tr>
+                    <td>{{ $pokemon->name }}</td>
                     <td>[TODO] A remplir avec la future table types</td>
                     <td>Idem</td>
                 </tr>

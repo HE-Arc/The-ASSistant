@@ -39,8 +39,8 @@
                     <li class="nav-item">
                         @if (Route::currentRouteName() == 'attack')
                             <a class="nav-link active" aria-current="page" href="{{ route('attack') }}">
-                            @else
-                                <a class="nav-link" href="{{ route('attack') }}">
+                        @else
+                            <a class="nav-link" href="{{ route('attack') }}">
                         @endif
                         En attaque
                         </a>
