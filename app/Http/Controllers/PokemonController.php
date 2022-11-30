@@ -26,18 +26,6 @@ class PokemonController extends Controller
     }
 
     /**
-     * Display
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function attack(Request $request)
-    {
-        $pokemon = Pokemon::find(2); // value to change
-        return view("pokemon.attack", ["pokemon" => $pokemon]);
-    }
-
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -64,6 +52,7 @@ class PokemonController extends Controller
             "special_attack" => "required|integer|gte:0|lte:255",
             "special_defense" => "required|integer|gte:0|lte:255",
             "speed" => "required|integer|gte:0|lte:255",
+            "number" => "nullable|integer|gte:0|lte:151",
             "type_one" => "exists:types,id",
             "type_two" => "nullable",
         ]);
@@ -75,20 +64,22 @@ class PokemonController extends Controller
         $pokemon->special_attack = $request->special_attack;
         $pokemon->special_defense = $request->special_defense;
         $pokemon->speed = $request->speed;
+        $pokemon->number = $request->number;
         $pokemon->save();
 
-        // $pokemonTypes = new PokemonType();
-        // $id = $pokemon->id;
-        // $pokemonTypes->pokemon_id = $id;
-        // $pokemonTypes->type_id = $request->type_one;
-        // $pokemonTypes->save();
+        $id = $pokemon->id;
 
-        // $pokemonTypes = new PokemonType();
-        // $pokemonTypes->pokemon_id = $id;
-        // $pokemonTypes->type_id = $request->type_two;
-        // $pokemonTypes->save();
+        $pokemonTypes = new PokemonType();
+        $pokemonTypes->pokemon_id = $id;
+        $pokemonTypes->type_id = $request->type_one;
+        $pokemonTypes->save();
 
-        //$pokemon->save($request->all());
+        $pokemonTypes = new PokemonType();
+        $pokemonTypes->pokemon_id = $id;
+        $pokemonTypes->type_id = $request->type_two;
+        $pokemonTypes->save();
+
+        $pokemon->save($request->all());
         return redirect()
             ->route("pokemon.index")
             ->with("success", "Pokemon created successfully.");
@@ -116,7 +107,7 @@ class PokemonController extends Controller
     public function edit($id)
     {
         return view("pokemon.edit", [
-            "pokemon" => Pokemon::find($id),
+            "pokemon" => Pokemon::with("types")->findOrFail($id),
             "types" => Type::all(),
         ]);
     }
@@ -138,8 +129,20 @@ class PokemonController extends Controller
             "special_attack" => "required|integer|gte:0|lte:255",
             "special_defense" => "required|integer|gte:0|lte:255",
             "speed" => "required|integer|gte:0|lte:255",
+            "number" => "nullable|integer|gte:0|lte:151",
+            "type_one" => "exists:types,id",
+            "type_two" => "nullable",
         ]);
-        Pokemon::findOrfail($id)->update($request->all());
+        $pokemon = Pokemon::findOrfail($id)->update($request->all());
+
+        $pokemonTypes = PokemonType::where("pokemon_id", $id)->first();
+        $pokemonTypes->type_id = $request->type_one;
+        $pokemonTypes->save();
+        if ($request->type_two != -1) {
+            $pokemonTypes = PokemonType::where("pokemon_id", $id)->get()[1];
+            $pokemonTypes->type_id = $request->type_two;
+            $pokemonTypes->save();
+        }
         return redirect()
             ->route("pokemon.index")
             ->with("success", "Pokemon updated successfully");

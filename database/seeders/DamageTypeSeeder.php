@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\DamageType;
+
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +16,20 @@ class DamageTypeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DamageType::truncate();
+        $csvFile = fopen(base_path("database/data/DamageTypes.csv"), "r");
+
+        $firstRow = true;
+        while (($data = fgetcsv($csvFile, 1000, ",")) !== false) {
+            if (!$firstRow) {
+                DamageType::create([
+                    "offensetype_id" => $data[0],
+                    "defensetype_id" => $data[1],
+                    "damagemultiplier" => $data[1]
+                ]);
+            }
+            $firstRow = false;
+        }
+        fclose($csvFile);
     }
 }

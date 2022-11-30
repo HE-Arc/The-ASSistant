@@ -18,6 +18,7 @@ class Pokemon extends Model
         "special_attack",
         "special_defense",
         "speed",
+        "number",
     ];
 
     public function types()

@@ -30,6 +30,7 @@ class PokemonSeeder extends Seeder
                     "special_attack" => $data[4],
                     "special_defense" => $data[5],
                     "speed" => $data[6],
+                    "number"=>$data[7],
                 ]);
             }
             $firstRow = false;
