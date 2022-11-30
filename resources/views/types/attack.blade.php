@@ -9,6 +9,19 @@
                 </tr>
             </thead>
             <tbody>
+                <div>
+                    <select name="type_one" id="inputTypeOne" class="form-select">
+                        @foreach ($types as $type)
+                            <option value="{{ $type->id }}" @if($type1 == $type->id) selected @endif>{{ ucfirst($type->name) }}</option>
+                        @endforeach
+                    </select>
+                    <select name="type_one" id="inputTypeOne" class="form-select">
+                        <option value="-1">None</option>
+                        @foreach ($types as $type)
+                            <option value="{{ $type->id }}" @if($type2 == $type->id) selected @endif>{{ ucfirst($type->name) }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <tr>
                     <td>{{ $type1 }}</td>
                     <td>{{ $type2 }}</td>

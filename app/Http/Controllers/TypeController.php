@@ -20,9 +20,9 @@ class TypeController extends Controller
     public function attack(Request $request)
     {
         //$pokemon = Pokemon::find(2); // value to change
-        //$request->type1
-        $types = Type::all();
         //$pokemon = Pokemon::find(1)->types()->orderBy("updated_at")->get();//->paginate(5);
+        $types = Type::all();
+        //$pokemonX2 = PokemonType::with("types")->where("offensive_type=" == $request->type1);
 
         return view("types.attack", ["types" => $types, "type1" => $request->type1, "type2" => $request->type2]);
 
