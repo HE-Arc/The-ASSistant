@@ -77,6 +77,8 @@
                 <input type="radio" name="theme" id="theme-grey">
                 <label for="theme" class="sr-only">Thème sombre</label>
                 <input type="radio" name="theme" id="theme-dark">
+                <label for="theme" class="sr-only">Thème orange</label>
+                <input type="radio" name="theme" id="theme-orange">
             </fieldset>
         </form>
     </aside>

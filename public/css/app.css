@@ -10,31 +10,53 @@ body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1.25rem;
     line-height: 1.5;
-    background: var(--clr-body-bg);
-    color: var(--clr-text);
+    background: var(--clr-body-bg) !important;
+    color: var(--clr-text) !important;
+}
+
+.poke-style {
+    text-align: center;
+    border-radius: 1em;
+    margin-top: 0.2vh;
+}
+
+.poke-style>p {
+    color: white;
+    mix-blend-mode: difference;
+    margin: 0;
 }
 
 .table {
-    color: var(--clr-text)
+    color: var(--clr-text) !important
 }
 
 .card {
     padding: 1rem;
-    background-color: var(--clr-card-bg);
+    background-color: var(--clr-card-bg) !important;
     border-block-start: 0.5rem solid;
+    border-block-start-color: var(--clr-heading);
     border-radius: 0.5rem;
 }
 
 .collapse-dots {
-    color: var(--clr-text);
+    color: var(--clr-text) !important;
 }
 
 .navbar-brand,
 h1,
 h2,
 h3 {
-    color: var(--clr-heading);
+    color: var(--clr-heading) !important;
     line-height: 1.1;
+}
+
+.navbar{
+    background-color: var(--clr-card-bg) !important;
+    color: var(--clr-heading) !important;
+}
+
+.nav-link{
+    color: var(--clr-text) !important;
 }
 
 .theme-selector>fieldset {
@@ -73,6 +95,10 @@ h3 {
     --radio-color: rgb(37, 37, 37);
 }
 
+.theme-selector input[type="radio"]#theme-orange {
+    --radio-color: #ffa31a;
+}
+
 /* So that it works on firefox,
     the classes and the :root:has() have to be separate otherwise
     the page won't update with the new styles */
@@ -82,26 +108,40 @@ h3 {
     --clr-body-bg: hsl(0, 0%, 28%);
     --clr-card-bg: hsl(0, 0%, 40%);
     --clr-text: hsl(0, 5%, 92%);
-    --clr-heading: hsl(0, 0%, 68%);
+    --clr-heading: hsl(0, 0%, 100%);
 }
 
 :root:has(#theme-grey:checked) {
     --clr-body-bg: hsl(0, 0%, 28%);
     --clr-card-bg: hsl(0, 0%, 40%);
     --clr-text: hsl(0, 5%, 92%);
-    --clr-heading: hsl(0, 0%, 68%);
+    --clr-heading: hsl(0, 0%, 100%);
 }
 
 .theme-dark {
     --clr-body-bg: hsl(0, 0%, 15%);
     --clr-card-bg: hsl(0, 0%, 22%);
     --clr-text: hsl(0, 0%, 85%);
-    --clr-heading: hsl(0, 0%, 60%);
+    --clr-heading: hsl(0, 0%, 95%);
 }
 
 :root:has(#theme-dark:checked) {
     --clr-body-bg: hsl(0, 0%, 15%);
     --clr-card-bg: hsl(0, 0%, 22%);
     --clr-text: hsl(0, 0%, 85%);
-    --clr-heading: hsl(0, 0%, 60%);
+    --clr-heading: hsl(0, 0%, 95%);
+}
+
+.theme-orange {
+    --clr-body-bg: #000000;
+    --clr-card-bg: #1b1b1b;
+    --clr-text: hsl(0, 0%, 85%);
+    --clr-heading: #ffa31a;
+}
+
+:root:has(#theme-orange:checked) {
+    --clr-body-bg: #000000;
+    --clr-card-bg: #1b1b1b;
+    --clr-text: hsl(0, 0%, 85%);
+    --clr-heading: #ffa31a;
 }

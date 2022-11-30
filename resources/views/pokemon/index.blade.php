@@ -10,9 +10,11 @@
                 </div>
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <div class="img-fluid rounded-start">
+                        {{-- <div class="img-fluid rounded-start">
                             image
-                        </div>
+                        </div> --}}
+                        <img src="./images/pokemon/{{ $pk->name }}.png" alt="{{ $pk->name }}"
+                            class="img-fluid rounded-start">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -21,12 +23,20 @@
                                     <div class="fw-bolder">
                                         Types
                                     </div>
-                                    <div>
-                                        {{ $pk->types }}
+                                    <!-- If it ain't broke don't fix it, this works for now -->
+                                    <div class="poke-style" style="background-color: #{{ $pk->types[0]['color'] }}">
+                                        <p>
+                                            {{ $pk->types[0]['name'] }}
+                                        </p>
                                     </div>
-                                    <div>
 
-                                    </div>
+                                    @if (count($pk->types) > 1)
+                                        <div class="poke-style" style="background-color: #{{ $pk->types[1]['color'] }}">
+                                            <p>
+                                                {{ $pk->types[1]['name'] }}
+                                            </p>
+                                        </div>
+                                    @endif
                                 </div>
                                 <div class="col">
                                     <table class="table table-borderless">

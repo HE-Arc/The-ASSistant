@@ -16,8 +16,8 @@ class PokemonController extends Controller
      */
     public function index()
     {
-        //$pokemon = Pokemon::with("types")->paginate(5);
-        $pokemon = Pokemon::find(1)->types()->orderBy("updated_at")->get();//->paginate(5);
+        $pokemon = Pokemon::with("types")->paginate(5);
+        //$pokemon = Pokemon::find(1)->types()->orderBy("updated_at")->get();//->paginate(5);
 
         return view("pokemon.index", compact("pokemon"))->with(
             "i",
