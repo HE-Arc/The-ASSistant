@@ -1,5 +1,6 @@
-@extends('layout.app')
+<!-- TODO Si connecté peut delete, new et edit pas si non connecté -->
 
+@extends('layout.app')
 @section('content')
     <h1>Pokédex</h1>
     @foreach ($pokemon as $pk)

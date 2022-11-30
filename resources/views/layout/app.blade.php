@@ -1,3 +1,5 @@
+<!-- TODO Session si connecté ou non -> si connecté -> déconnecte si clic -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +27,7 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <div class="collapse navbar-collapse justify-content-between" id="navbarTogglerDemo02">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         @if (Route::currentRouteName() == 'pokemon.index')
@@ -62,6 +64,15 @@
                         @endif
                         À propos
                         </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item">
+                        @if (Route::currentRouteName() == 'login') <!-- TODO Mettre si session connectée -->
+                            <a class="nav-link active" aria-current="page" href="#">Log out</a>
+                        @else
+                            <a class="nav-link active" href="{{ route('login') }}">Login</a>
+                        @endif
                     </li>
                 </ul>
             </div>
