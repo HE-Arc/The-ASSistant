@@ -3,7 +3,7 @@
 @section('content')
     <div class="row mb-3">
         <div class="col-12">
-            <a href="{{ route('pokemon.index') }}" class="btn btn-primary">Back</a>
+            <a href="{{ route('pokemon.index') }}" class="btn btn-primary">Retour</a>
         </div>
         <form action="{{ route('pokemon.update', $pokemon->id) }}" method="POST">
             @csrf
@@ -12,45 +12,46 @@
                 <div class="col-12 col-lg-6 offset-0 offset-lg-3">
                     <div class="card">
                         <div class="card-header">
-                            Edit Pokemon
+                            Editer Pokemon
+                            {{ $pokemon->types[0]['id'] }}
                         </div>
                         <div class="card-body">
                             <div class="form-row">
                                 <div class="form-group col-12">
-                                    <label for="inputName">Name</label>
+                                    <label for="inputName">Nom</label>
                                     <input type="text" name="name" class="form-control" id="inputName"
                                         value="{{ $pokemon->name }}">
                                 </div>
                                 <div class="row mt-3">
                                     <div class="form-group col-6">
-                                        <label for="inputHp">Health</label>
+                                        <label for="inputHp">Vie</label>
                                         <input type="number" name="hp" class="form-control" id="inputHp"
                                             min="1" max="255" value="{{ $pokemon->hp }}">
                                     </div>
                                     <div class="form-group col-6">
-                                        <label for="inputAttack">Attack</label>
+                                        <label for="inputAttack">Attaque</label>
                                         <input type="number" name="attack" class="form-control" id="inputAttack"
                                             min="1" max="255" value="{{ $pokemon->attack }}">
                                     </div>
                                     <div class="form-group col-6">
-                                        <label for="inputDefense">Defense</label>
+                                        <label for="inputDefense">Défence</label>
                                         <input type="number" name="defense" class="form-control" id="inputDefense"
                                             min="1" max="255" value="{{ $pokemon->defense }}">
                                     </div>
                                     <div class="form-group col-6">
-                                        <label for="inputSpecialAttack">Special attack</label>
+                                        <label for="inputSpecialAttack">Attaque spé</label>
                                         <input type="number" name="special_attack" class="form-control"
                                             id="inputSpecialAttack" min="1" max="255"
                                             value="{{ $pokemon->special_attack }}">
                                     </div>
                                     <div class="form-group col-6">
-                                        <label for="inputSpecialDefense">Special defense</label>
+                                        <label for="inputSpecialDefense">Défence spé</label>
                                         <input type="number" name="special_defense" class="form-control"
                                             id="inputSpecialDefense" min="1" max="255"
                                             value="{{ $pokemon->special_defense }}">
                                     </div>
                                     <div class="form-group col-6">
-                                        <label for="inputSpeed">Speed</label>
+                                        <label for="inputSpeed">Vitesse</label>
                                         <input type="number" name="speed" class="form-control" id="inputSpeed"
                                             min="1" max="255" value="{{ $pokemon->speed }}">
                                     </div>
@@ -60,7 +61,8 @@
                                             aria-label="Pokemon type one">
                                             @foreach ($types as $type)
                                                 <option value="{{ $type->id }}"
-                                                    @if ($type->id == $pokemon->type_one) selected @endif>{{ $type->name }}
+                                                    @if ($type->id == $pokemon->types[0]['id']) selected="selected" @endif>
+                                                    {{ $type->name }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -72,8 +74,8 @@
                                             <option value="-1">None</option>
                                             @foreach ($types as $type)
                                                 <option value="{{ $type->id }}"
-                                                    @if ($type->id == $pokemon->type_two) selected @endif>{{ $type->name }}
-                                                </option>
+                                                    @if (count($pokemon->types) > 1 && $type->id == $pokemon->types[1]['id']) selected @endif>
+                                                    {{ $type->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -87,7 +89,6 @@
                                         </div>
                                     @endif
                                 </div>
-
                                 <button type="submit" class="btn btn-primary mt-3">Envoyer</button>
                             </div>
                         </div>

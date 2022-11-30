@@ -8,13 +8,14 @@
             <div class="card mb-3">
                 <div class="card-header">
                     {{ $pk->nameWithFirstLetterCapitalized() }}
+                    #{{ $pk->number }}
                 </div>
                 <div class="row g-0">
                     <div class="col-md-4">
                         {{-- <div class="img-fluid rounded-start">
                             image
                         </div> --}}
-                        <img src="./images/pokemon/{{ $pk->name }}.png" alt="{{ $pk->name }}"
+                        <img src="./images/Pokemon/{{ $pk->number }}.png" alt="{{ $pk->name }}"
                             class="img-fluid rounded-start">
                     </div>
                     <div class="col-md-8">
@@ -25,19 +26,25 @@
                                         Types
                                     </div>
                                     <!-- If it ain't broke don't fix it, this works for now -->
-
-                                    <div class="poke-style" style="background-color: #{{ $pk->types[0]['color'] }}">
-                                        <p>
-                                            {{ $pk->types[0]['name'] }}
-                                        </p>
-                                    </div>
-
+                                    @if (count($pk->types) > 0)
+                                        <span class="poke-style">
+                                            <div class="poke-type-color"
+                                                style="background-color: #{{ $pk->types[0]['color'] }}">
+                                            </div>
+                                            <div class="type-name">
+                                                {{ $pk->types[0]['name'] }}
+                                            </div>
+                                        </span>
+                                    @endif
                                     @if (count($pk->types) > 1)
-                                        <div class="poke-style" style="background-color: #{{ $pk->types[1]['color'] }}">
-                                            <p>
+                                        <span class="poke-style">
+                                            <div class="poke-type-color"
+                                                style="background-color: #{{ $pk->types[1]['color'] }}">
+                                            </div>
+                                            <div class="type-name">
                                                 {{ $pk->types[1]['name'] }}
-                                            </p>
-                                        </div>
+                                            </div>
+                                        </span>
                                     @endif
                                 </div>
                                 <div class="col">
