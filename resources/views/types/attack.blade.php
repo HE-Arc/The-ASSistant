@@ -10,7 +10,8 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $pokemon->name }}</td>
+                    <td>{{ $type1 }}</td>
+                    <td>{{ $type2 }}</td>
                     <td>[TODO] A remplir avec la future table types</td>
                     <td>Idem</td>
                 </tr>

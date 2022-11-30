@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pokemon;
-use App\Models\PokemonType;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -24,18 +23,6 @@ class PokemonController extends Controller
             (request()->input("page", 1) - 1) * 5
         );
     }
-
-    /**
-     * Display
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function attack(Request $request)
-    {
-        $pokemon = Pokemon::find(2); // value to change
-        return view("pokemon.attack", ["pokemon" => $pokemon]);
-    }
-
 
     /**
      * Show the form for creating a new resource.

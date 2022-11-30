@@ -112,7 +112,12 @@
                                                 href="https://www.pokepedia.fr/{{ $pk->nameWithFirstLetterCapitalized() }}">Poképédia</a>
                                         </div>
                                         <div class="w-100 my-2">
-                                            <a class="btn btn-info w-100 m-auto" href="{{ route('attack', $pk->id) }}">En
+                                            @if (count($pk->types) <= 1)
+                                            <a class="btn btn-info w-100 m-auto" href="{{ route('attack', ['type1' => $pk->types[0]['id']]) }}">
+                                            @else
+                                            <a class="btn btn-info w-100 m-auto" href="{{ route('attack', ['type1' => $pk->types[0]['id'], 'type2' => $pk->types[1]['id']]) }}">
+                                            @endif
+                                            En
                                                 attaque</a>
                                         </div>
                                         <div class="w-100 my-2">
