@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,6 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Schema::disableForeignKeyConstraints();
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
@@ -21,8 +23,10 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call(PokemonSeeder::class);
-        $this->call(TypesSeeder::class);
-        $this->call(PokemonTypesSeeder::class);
-        $this->call(TypesDamageSeeder::class);
+        $this->call(TypeSeeder::class);
+        $this->call(PokemonTypeSeeder::class);
+        $this->call(DamageTypeSeeder::class);
+
+        Schema::enableForeignKeyConstraints();
     }
 }

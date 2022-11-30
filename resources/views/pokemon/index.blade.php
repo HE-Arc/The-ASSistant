@@ -24,6 +24,7 @@
                                         Types
                                     </div>
                                     <!-- If it ain't broke don't fix it, this works for now -->
+
                                     <div class="poke-style" style="background-color: #{{ $pk->types[0]['color'] }}">
                                         <p>
                                             {{ $pk->types[0]['name'] }}

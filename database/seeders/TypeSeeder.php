@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\PokemonType;
+use App\Models\Type;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class PokemonTypesSeeder extends Seeder
+class TypeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,14 +15,15 @@ class PokemonTypesSeeder extends Seeder
      */
     public function run()
     {
-        $csvFile = fopen(base_path("database/data/PokemonTypes.csv"), "r");
+        Type::truncate();
+        $csvFile = fopen(base_path("database/data/Types.csv"), "r");
 
         $firstRow = true;
         while (($data = fgetcsv($csvFile, 1000, ",")) !== false) {
             if (!$firstRow) {
-                PokemonType::create([
-                    "pokemon_id" => $data[0],
-                    "type_id" => $data[1],
+                Type::create([
+                    "name" => $data[0],
+                    "color" => $data[1],
                 ]);
             }
             $firstRow = false;
