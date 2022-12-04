@@ -74,10 +74,12 @@ class PokemonController extends Controller
         $pokemonTypes->type_id = $request->type_one;
         $pokemonTypes->save();
 
-        $pokemonTypes = new PokemonType();
-        $pokemonTypes->pokemon_id = $id;
-        $pokemonTypes->type_id = $request->type_two;
-        $pokemonTypes->save();
+        if ($request->type_two > 0) {
+            $pokemonTypes = new PokemonType();
+            $pokemonTypes->pokemon_id = $id;
+            $pokemonTypes->type_id = $request->type_two;
+            $pokemonTypes->save();
+        }
 
         $pokemon->save($request->all());
         return redirect()
