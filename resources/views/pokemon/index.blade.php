@@ -16,7 +16,7 @@
                         {{-- <div class="img-fluid rounded-start">
                             image
                         </div> --}}
-                        <img src="./images/Pokemon/{{ $pk->number }}.png" alt="{{ $pk->name }}"
+                        <img src="/images/Pokemon/{{ $pk->number }}.png" alt="{{ $pk->name }}"
                             class="img-fluid rounded-start">
                     </div>
                     <div class="col-md-8">
