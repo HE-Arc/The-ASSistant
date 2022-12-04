@@ -65,7 +65,14 @@ class PokemonController extends Controller
         $pokemon->special_defense = $request->special_defense;
         $pokemon->speed = $request->speed;
         $pokemon->number = $request->number;
-        $pokemon->save();
+
+        try {
+            $pokemon->save();
+        } catch (\Throwable $th) {
+            return redirect()
+                ->route("pokemon.create")
+                ->with("error", "Erreur lors de la création du Pokémon");
+        }
 
         $id = $pokemon->id;
 
@@ -81,7 +88,7 @@ class PokemonController extends Controller
             $pokemonTypes->save();
         }
 
-        $pokemon->save($request->all());
+        //$pokemon->save($request->all());
         return redirect()
             ->route("pokemon.index")
             ->with("success", "Pokemon created successfully.");

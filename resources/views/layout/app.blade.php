@@ -89,7 +89,7 @@
             <fieldset>
                 <legend class="sr-only">Selection de thème</legend>
                 <label for="theme" class="sr-only">Thème clair</label>
-                <input type="radio" name="theme" id="theme-light">
+                <input type="radio" name="theme" id="theme-light" checked>
                 <label for="theme" class="sr-only">Thème gris</label>
                 <input type="radio" name="theme" id="theme-grey">
                 <label for="theme" class="sr-only">Thème sombre</label>
