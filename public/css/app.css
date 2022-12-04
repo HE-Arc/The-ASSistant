@@ -69,6 +69,10 @@ h3 {
     color: var(--clr-text) !important;
 }
 
+.navbar-toggler-icon, .navbar-toggler{
+    color: var(--clr-text) !important;
+}
+
 .theme-selector>fieldset {
     border: 0;
     display: flex;
