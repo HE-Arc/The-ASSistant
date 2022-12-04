@@ -25,15 +25,9 @@ Route::get('defense', [TypeController::class, 'defense'])->name('defense');
 Route::get('login', [UserController::class, 'login'])->name('login');
 Route::get('logout', [UserController::class, 'logout'])->name('logout');
 
+Route::get('action', [PokemonController::class, 'action'])->name('action');
+
 Route::post('authenticate', [UserController::class, 'authenticate'])->name('authenticate');
-
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('pokemon', [PokemonController::class, 'index']);
-*/
 
 Route::resource("pokemon", PokemonController::class);
 Route::resource("users", UserController::class);

@@ -1,5 +1,3 @@
- <!-- TODO mettre vueJS -->
-
 @extends('layout.app')
 @section('content')
 <div class="row mb-3">
