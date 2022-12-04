@@ -51,7 +51,7 @@ class TypeController extends Controller
             }
 
             // same for second type
-            $damage2 = 0;
+            $damage2 = 1;
             if($request->type2 != null && $request->type2 >= 0)
             {
                 foreach($specialDamages2 as $damageType)
@@ -63,7 +63,7 @@ class TypeController extends Controller
                 }
             }
             $currentDamage = max($damage1, $damage2); // we keep the type that makes the most damage
-            array_push($damages[$currentDamage], $type);
+            array_push($damages[strval($currentDamage)], $type);
         }
         return view("types.attack", ["types" => $types, "type1" => $request->type1, "type2" => $request->type2, "damageTypes" => $damages, "defatt" => "attack"]);
     }
@@ -122,7 +122,7 @@ class TypeController extends Controller
                 }
             }
             $currentDamage = $damage1 * $damage2; // we keep the type that makes the most damage
-            array_push($damages[$currentDamage], $type);
+            array_push($damages[strval($currentDamage)], $type);
         }
         return view("types.attack", ["types" => $types, "type1" => $request->type1, "type2" => $request->type2, "damageTypes" => $damages, "defatt" => "defense"]);
 

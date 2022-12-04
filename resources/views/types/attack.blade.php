@@ -1,6 +1,13 @@
 @extends('layout.app')
 @section('content')
-    <h1>En {{ $defatt }}</h1>
+    <h1>
+        En
+        @if ($defatt == 'attack')
+        attaque
+        @else
+        défense
+        @endif
+    </h1>
     <div style="column-count: 2;">
         <h1>Types</h1>
         <div>
