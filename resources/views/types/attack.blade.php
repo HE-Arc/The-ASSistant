@@ -4,17 +4,19 @@
     <div style="column-count: 2;">
         <h1>Types</h1>
         <div>
-            <select name="type_one" id="inputTypeOne" class="form-select">
-                @foreach ($types as $type)
-                    <option value="{{ $type->id }}" @if($type1 == $type->id) @endif>{{ ucfirst($type->name) }}</option>
-                @endforeach
-            </select>
-            <select name="type_one" id="inputTypeOne" class="form-select">
-                <option value="-1">None</option>
-                @foreach ($types as $type)
-                    <option value="{{ $type->id }}" @if($type2 == $type->id) @endif>{{ ucfirst($type->name) }}</option>
-                @endforeach
-            </select>
+            <form action="{{ route('attack') }}" method="GET">
+                <select name="type1" id="inputTypeOne" class="form-select" onchange="submit()">
+                    @foreach ($types as $type)
+                        <option value="{{ $type->id }}" @if($type1 == $type->id) selected @endif>{{ ucfirst($type->name) }}</option>
+                    @endforeach
+                </select>
+                <select name="type2" id="inputTypeOne" class="form-select">
+                    <option value="-1">None</option>
+                    @foreach ($types as $type)
+                        <option value="{{ $type->id }}" @if($type2 == $type->id) selected @endif>{{ ucfirst($type->name) }}</option>
+                    @endforeach
+                </select>
+            </form>
         </div>
         <div>
             @foreach ($damageTypes as $key => $damageByMultiplier)
