@@ -5,12 +5,12 @@
     <form action="{{route('action')}}" class="form-inline" method="GET">
         @csrf
         @if (isset($_GET['search']))
-            <input name="search" value="{{$_GET['search']}}" inputmode="search" class="typeahead form-control mr-sm-2" type="text" placeholder="Rechercher..." aria-label="Search">
+            <input name="search" id="search" value="{{$_GET['search']}}" inputmode="search" class="typeahead form-control mr-sm-2" type="text" placeholder="Rechercher..." aria-label="Search">
         @else
-            <input name="search" inputmode="search" class="typeahead form-control mr-sm-2" type="text" placeholder="Rechercher..." aria-label="Search">
+            <input name="search" id="search" inputmode="search" class="typeahead form-control mr-sm-2" type="text" placeholder="Rechercher..." aria-label="Search">
         @endif
         <button class="btn btn-outline-success my-2 my-sm-0 search-group-button" type="submit">Rechercher</button>
-        <button class="btn btn-outline-warning my-2 my-sm-0 search-group-button" onclick="clearSearch()">Clear</button>
+        <button class="btn btn-outline-warning my-2 my-sm-0 search-group-button" id="clearButton">Clear</button>
     </form>
     <br>
     @if (count($pokemon) == 0)
