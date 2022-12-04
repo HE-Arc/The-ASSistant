@@ -51,9 +51,10 @@ class TypeController extends Controller
             }
 
             // same for second type
-            $damage2 = 1;
+            $damage2 = 0;
             if($request->type2 != null && $request->type2 >= 0)
             {
+                $damage2 = 1;
                 foreach($specialDamages2 as $damageType)
                 {
                     if($damageType->defensetype_id == $type->id)
