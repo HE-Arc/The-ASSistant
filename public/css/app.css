@@ -22,6 +22,49 @@ body {
     vertical-align: middle;
 }
 
+.three-col {
+    column-count: 0;
+    vertical-align: middle;
+}
+
+
+
+.three-col>.poke-style {
+    margin-top: 0 !important;
+    margin-bottom: 1rem;
+}
+
+.damages {
+    margin-top: 1em;
+}
+
+.three-col>.poke-style {
+    display: flex;
+}
+
+.types-select {
+    background-color: var(--clr-card-bg);
+    border-radius: 0.5rem;
+    box-shadow: 0.2em 0.2em 0.3rem 0.3rem rgba(0, 0, 0, 0.22);
+    width: 100%;
+    padding: 1em;
+    align-self: center;
+}
+
+.horiz-bar {
+    background-color: var(--clr-text);
+    width: 100%;
+    height: 0.2rem;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.types-form>.form-select {
+    width: 49%;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 .poke-type-color {
     width: 2rem;
     outline: 0.1em solid var(--clr-text);
@@ -69,7 +112,8 @@ h3 {
     color: var(--clr-text) !important;
 }
 
-.navbar-toggler-icon, .navbar-toggler{
+.navbar-toggler-icon,
+.navbar-toggler {
     color: var(--clr-text) !important;
 }
 
@@ -160,4 +204,19 @@ h3 {
     --clr-card-bg: #1b1b1b;
     --clr-text: hsl(0, 0%, 85%);
     --clr-heading: #ffa31a;
+}
+
+/* Mobile first */
+@media only screen and (min-width: 768px) {
+    .three-col {
+        column-count: 3;
+        vertical-align: middle;
+    }
+
+    .types-form>.form-select {
+        width: max(100px, 20%);
+        margin-right: 14%;
+        margin-left: 14%;
+    }
+
 }

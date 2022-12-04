@@ -3,41 +3,62 @@
     <h1>
         En
         @if ($defatt == 'attack')
-        attaque
+            attaque
         @else
-        défense
+            défense
         @endif
     </h1>
-    <div style="column-count: 2;">
-        <h1>Types</h1>
-        <div>
-            <form action="{{ route($defatt) }}" method="GET">
+    <div>
+        <div class="types-select">
+            <h2>Types</h2>
+            <div class="horiz-bar"></div>
+            <form action="{{ route($defatt) }}" method="GET" class="types-form">
                 <select name="type1" id="inputTypeOne" class="form-select" onchange="submit()">
                     <option value="-1">None</option>
                     @foreach ($types as $type)
-                        <option value="{{ $type->id }}" @if($type1 == $type->id) selected @endif>{{ ucfirst($type->name) }}</option>
+                        <option value="{{ $type->id }}" @if ($type1 == $type->id) selected @endif>
+                            {{ ucfirst($type->name) }}</option>
                     @endforeach
                 </select>
                 <select name="type2" id="inputTypeOne" class="form-select" onchange="submit()">
                     <option value="-1">None</option>
                     @foreach ($types as $type)
-                        <option value="{{ $type->id }}" @if($type2 == $type->id) selected @endif>{{ ucfirst($type->name) }}</option>
+                        <option value="{{ $type->id }}" @if ($type2 == $type->id) selected @endif>
+                            {{ ucfirst($type->name) }}</option>
                     @endforeach
                 </select>
             </form>
         </div>
         <div>
-            @if(isset($damageTypes))
-            @foreach ($damageTypes as $key => $damageByMultiplier)
-            <div>
-                <h2>x{{$key}}</h2>
-            </div>
-            @foreach ($damageByMultiplier as $type)
-            <div>
-                {{ $type->name }}
-            </div>
-            @endforeach
-            @endforeach
+            @if (isset($damageTypes))
+                @foreach ($damageTypes as $key => $damageByMultiplier)
+                    <div class="damages card">
+                        <div class="card-header">
+                            <h3>
+                                @if ($key == 2 || $key==4)
+                                    Super efficace
+                                @elseif ($key == 1)
+                                    Efficace
+                                @elseif ($key == 0.5)
+                                    Pas très efficace
+                                @elseif ($key == 0)
+                                    Inefficace
+                                @endif &#40;x{{ $key }}&#41;
+                            </h3>
+                        </div>
+                        <div class="three-col card-body">
+                            @foreach ($damageByMultiplier as $type)
+                                <span class="poke-style">
+                                    <div class="poke-type-color" style="background-color: #{{ $type->color }}">
+                                    </div>
+                                    <div>
+                                        {{ $type->name }}
+                                    </div>
+                                </span>
+                            @endforeach
+                        </div>
+                    </div>
+                @endforeach
             @endif
         </div>
     </div>
