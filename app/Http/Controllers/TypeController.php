@@ -27,7 +27,7 @@ class TypeController extends Controller
 
         $specialDamages1 = DamageType::where('offensetype_id', '=', $request->type1)->get();
         $specialDamages2 = [];
-        if($request->type2 != null && $request->type2 >= 0)
+        if($request->type2 != null && $request->type2 >= 0 && $request->type2 < count($types))
         {
             $specialDamages2 = DamageType::where('offensetype_id', '=', $request->type2)->get(); // second type types
         }
@@ -52,7 +52,7 @@ class TypeController extends Controller
 
             // same for second type
             $damage2 = 0;
-            if($request->type2 != null && $request->type2 >= 0)
+            if($request->type2 != null && $request->type2 >= 0 && $request->type2 < count($types))
             {
                 $damage2 = 1;
                 foreach($specialDamages2 as $damageType)
@@ -85,7 +85,7 @@ class TypeController extends Controller
 
         $specialDamages1 = DamageType::where('defensetype_id', '=', $request->type1)->get();
         $specialDamages2 = [];
-        if($request->type2 != null && $request->type2 >= 0)
+        if($request->type2 != null && $request->type2 >= 0 && $request->type2 < count($types))
         {
             $specialDamages2 = DamageType::where('defensetype_id', '=', $request->type2)->get(); // second type types
         }
@@ -112,7 +112,7 @@ class TypeController extends Controller
 
             // same for second type
             $damage2 = 1;
-            if($request->type2 != null && $request->type2 >= 0)
+            if($request->type2 != null && $request->type2 >= 0 && $request->type2 < count($types))
             {
                 foreach($specialDamages2 as $damageType)
                 {
