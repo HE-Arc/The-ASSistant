@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('about', [HomeController::class, 'about'])->name('about');
 Route::get('attack', [TypeController::class, 'attack'])->name('attack');
-Route::get('defense', [HomeController::class, 'defense'])->name('defense');
+Route::get('defense', [TypeController::class, 'defense'])->name('defense');
 Route::get('login', [UserController::class, 'login'])->name('login');
 Route::get('logout', [UserController::class, 'logout'])->name('logout');
 
