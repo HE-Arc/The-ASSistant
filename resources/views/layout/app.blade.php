@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ url('/css/app.css') }}">
     <script type="text/javascript" src="{{ url('/js/cookieManager.js') }}"></script>
     <script type="text/javascript" src="{{ url('/js/themeChanger.js') }}"></script>
+    <script type="text/javascript" src="{{ url('/js/search.js') }}"></script>
 </head>
 
 <body>

@@ -27,7 +27,9 @@ body {
     vertical-align: middle;
 }
 
-
+.search-group-button{
+    margin-right: 1%;
+}
 
 .three-col>.poke-style {
     margin-top: 0 !important;
