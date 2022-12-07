@@ -6,6 +6,10 @@
     --clr-selector-back: hsl(0, 0%, 60%);
 }
 
+* {
+    transition: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
 body {
     margin: 0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -13,12 +17,12 @@ body {
     line-height: 1.5;
     background: var(--clr-body-bg) !important;
     color: var(--clr-text) !important;
+    transition: 0.2s ease-in-out;
 }
 
 .poke-style {
     text-align: center;
     margin-top: 1rem;
-    display: flex;
     vertical-align: middle;
 }
 
@@ -27,7 +31,7 @@ body {
     vertical-align: middle;
 }
 
-.search-group-button{
+.search-group-button {
     margin-right: 1%;
 }
 
@@ -69,11 +73,18 @@ body {
 
 .poke-type-color {
     width: 2rem;
-    outline: 0.1em solid var(--clr-text);
+    height: 2rem;
+    outline: 0.1em solid var(--clr-heading);
     outline-offset: 0.1em;
     border-radius: 50%;
     margin-right: max(10px, 1em);
     vertical-align: middle;
+    transition: 0.3s ease-in-out;
+}
+
+.poke-type-color:hover {
+    outline: 0.2em solid var(--clr-text);
+    outline-offset: 0em;
 }
 
 .type-name {
@@ -93,16 +104,22 @@ body {
     border-radius: 0.5rem;
 }
 
-.collapse-dots {
-    color: var(--clr-text) !important;
-}
-
 .navbar-brand,
 h1,
 h2,
 h3 {
     color: var(--clr-heading) !important;
     line-height: 1.1;
+}
+
+.navbar-brand {
+    font-size: 2.5rem;
+}
+
+.poke-img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 1em 1em 1em 1em;
 }
 
 .navbar {
@@ -211,7 +228,9 @@ h3 {
 /* Mobile first */
 @media only screen and (min-width: 768px) {
     .three-col {
-        column-count: 3;
+        display: grid;
+        gap: 0.7em;
+        grid-template-columns: auto auto auto;
         vertical-align: middle;
     }
 
@@ -220,5 +239,4 @@ h3 {
         margin-right: 14%;
         margin-left: 14%;
     }
-
 }

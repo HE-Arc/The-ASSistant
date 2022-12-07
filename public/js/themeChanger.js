@@ -1,3 +1,5 @@
+/* Theme selctor largely based off of this Kevin Powell video
+    https://www.youtube.com/watch?v=fyuao3G-2qg */
 let colorThemes = document.querySelectorAll('[name="theme"]');
 
 // store theme

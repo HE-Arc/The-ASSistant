@@ -1,5 +1,6 @@
-$(document).ready(function(){
-    $("#clearButton").click(function(){
+$(document).ready(function () {
+    $("#clearButton").click(function () {
         $("#search").val('');
+        // window.location = window.location;
     });
 })
