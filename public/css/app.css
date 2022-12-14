@@ -53,6 +53,14 @@ body {
     align-self: center;
 }
 
+.create-pokemon-button {
+    margin-top: 15px;
+    position: sticky;
+    bottom: 5vh;
+    left: 25%;
+    font-size: 1.2rem;
+}
+
 .horiz-bar {
     background-color: var(--clr-text);
     width: 100%;
