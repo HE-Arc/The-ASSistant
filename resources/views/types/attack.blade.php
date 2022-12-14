@@ -16,15 +16,19 @@
                 <select name="type1" id="inputTypeOne" class="form-select" onchange="submit()">
                     <option value="-1">None</option>
                     @foreach ($types as $type)
+                    @if ($type->id != $type2)
                         <option value="{{ $type->id }}" @if ($type1 == $type->id) selected @endif>
                             {{ ucfirst($type->name) }}</option>
+                    @endif
                     @endforeach
                 </select>
                 <select name="type2" id="inputTypeOne" class="form-select" onchange="submit()">
                     <option value="-1">None</option>
                     @foreach ($types as $type)
+                    @if ($type->id != $type1)
                         <option value="{{ $type->id }}" @if ($type2 == $type->id) selected @endif>
                             {{ ucfirst($type->name) }}</option>
+                    @endif
                     @endforeach
                 </select>
             </form>
