@@ -20,7 +20,7 @@ class TypeController extends Controller
     {
         $types = Type::all();
 
-        if($request->type1 == null)
+        if($request->type1 == null || ($request->type1 == -1 && $request->type2 == -1))
         {
             return view("types.attack", ["types" => $types, "type1" => $request->type1, "type2" => $request->type2, "defatt" => "attack"]);
         }
@@ -41,12 +41,16 @@ class TypeController extends Controller
 
         foreach($types as $type)
         {
-            $damage1 = 1; // by default, if one of the types of the pokémon don't have this type in their list, that means it is x1 power
-            foreach($specialDamages1 as $damageType)
+            $damage1 = 0; // by default, if one of the types of the pokémon don't have this type in their list, that means it is x1 power
+            if($request->type1 != null && $request->type1 >= 0 && $request->type1 < count($types))
             {
-                if($damageType->defensetype_id == $type->id)
+                $damage1 = 1;
+                foreach($specialDamages1 as $damageType)
                 {
-                    $damage1 = $damageType->damagemultiplier; // get the damage multiplier
+                    if($damageType->defensetype_id == $type->id)
+                    {
+                        $damage1 = $damageType->damagemultiplier; // get the damage multiplier
+                    }
                 }
             }
 
