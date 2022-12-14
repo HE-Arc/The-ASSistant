@@ -1,8 +1,9 @@
 :root {
-    --clr-body-bg: hsl(0 0% 90%);
-    --clr-card-bg: hsl(0 0% 100%);
-    --clr-text: hsl(0 0% 0%);
-    --clr-heading: hsl(0 0% 15%);
+    --clr-body-bg: hsl(0, 0%, 90%);
+    --clr-card-bg: hsl(0, 0%, 100%);
+    --clr-text: hsl(0, 0%, 0%);
+    --clr-text-alpha: hsla(1, 0%, 0%, 0.22);
+    --clr-heading: hsl(0, 0%, 15%);
     --clr-selector-back: hsl(0, 0%, 60%);
 }
 
@@ -46,7 +47,7 @@ body {
 .types-select {
     background-color: var(--clr-card-bg);
     border-radius: 0.5rem;
-    box-shadow: 0.2em 0.2em 0.3rem 0.3rem rgba(0, 0, 0, 0.22);
+    box-shadow: 0.2em 0.2em 0.3rem 0.3rem hsla(1, 0%, 0%, 0.22);
     width: 100%;
     padding: 1em;
     align-self: center;
@@ -166,7 +167,7 @@ h3 {
     padding: 1rem 3rem;
     margin-inline: auto;
     border-radius: 0 0 1rem 1rem;
-    box-shadow: 0 0 0.3rem 0.3rem rgba(0, 0, 0, 0.22);
+    box-shadow: 0 0 0.3rem 0.3rem var(--clr-text-alpha);
 }
 
 .theme-selector input[type="radio"] {
@@ -204,10 +205,12 @@ h3 {
     the page won't update with the new styles */
 /* Theme selctor largely based off of this Kevin Powell video
     https://www.youtube.com/watch?v=fyuao3G-2qg */
+
 .theme-grey {
     --clr-body-bg: hsl(0, 0%, 28%);
     --clr-card-bg: hsl(0, 0%, 40%);
     --clr-text: hsl(0, 5%, 92%);
+    --clr-text-alpha: hsla(0, 5%, 92%, 0.22);
     --clr-heading: hsl(0, 0%, 100%);
 }
 
@@ -215,6 +218,7 @@ h3 {
     --clr-body-bg: hsl(0, 0%, 28%);
     --clr-card-bg: hsl(0, 0%, 40%);
     --clr-text: hsl(0, 5%, 92%);
+    --clr-text-alpha: hsla(0, 5%, 92%, 0.22);
     --clr-heading: hsl(0, 0%, 100%);
 }
 
@@ -222,6 +226,7 @@ h3 {
     --clr-body-bg: hsl(0, 0%, 15%);
     --clr-card-bg: hsl(0, 0%, 22%);
     --clr-text: hsl(0, 0%, 85%);
+    --clr-text-alpha: hsla(0, 0%, 85%, 0.22);
     --clr-heading: hsl(0, 0%, 95%);
 }
 
@@ -229,6 +234,7 @@ h3 {
     --clr-body-bg: hsl(0, 0%, 15%);
     --clr-card-bg: hsl(0, 0%, 22%);
     --clr-text: hsl(0, 0%, 85%);
+    --clr-text-alpha: hsl(0, 0%, 85%, 0.22);
     --clr-heading: hsl(0, 0%, 95%);
 }
 
@@ -236,6 +242,7 @@ h3 {
     --clr-body-bg: #000000;
     --clr-card-bg: #1b1b1b;
     --clr-text: hsl(0, 0%, 85%);
+    --clr-text-alpha: hsla(0, 0%, 85%, 0.22);
     --clr-heading: #ffa31a;
 }
 
@@ -243,6 +250,7 @@ h3 {
     --clr-body-bg: #000000;
     --clr-card-bg: #1b1b1b;
     --clr-text: hsl(0, 0%, 85%);
+    --clr-text-alpha: hsla(0, 0%, 85%, 0.22);
     --clr-heading: #ffa31a;
 }
 
