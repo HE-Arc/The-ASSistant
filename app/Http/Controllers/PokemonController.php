@@ -16,8 +16,10 @@ class PokemonController extends Controller
      */
     public function index()
     {
+        // Gets all the pokemon and their types
         $pokemon = Pokemon::with("types")->paginate(5);
 
+        // Returns the pokemon 5 at a time with pagination
         return view("pokemon.index", compact("pokemon"))->with(
             "i",
             (request()->input("page", 1) - 1) * 5
@@ -31,16 +33,18 @@ class PokemonController extends Controller
      */
     public function create()
     {
-        if(!empty(session('username')))
-        {
+        /* This is checking if the user is logged in. If they are, they can create a pokemon. If they
+         are not, they are redirected to the pokemon index page with an error message. */
+        if (!empty(session("username"))) {
             $types = Type::all();
             return view("pokemon.create", compact("types"));
-        }
-        else
-        {
+        } else {
             return redirect()
-            ->route("pokemon.index")
-            ->with("error", "Vous ne pouvez pas créer un Pokémon si vous n'êtes pas connnecté.");
+                ->route("pokemon.index")
+                ->with(
+                    "error",
+                    "Vous ne pouvez pas créer un Pokémon si vous n'êtes pas connnecté."
+                );
         }
     }
 
@@ -52,8 +56,7 @@ class PokemonController extends Controller
      */
     public function store(Request $request)
     {
-        if(!empty(session('username')))
-        {
+        if (!empty(session("username"))) {
             $request->validate([
                 "name" => "required|string",
                 "hp" => "required|integer|gte:0|lte:255",
@@ -66,6 +69,8 @@ class PokemonController extends Controller
                 "type_one" => "exists:types,id",
                 "type_two" => "nullable",
             ]);
+
+            // Has to be this way because the direct version won't work due to the requirement to add to two tables
             $pokemon = new Pokemon();
             $pokemon->name = $request->name;
             $pokemon->hp = $request->hp;
@@ -98,16 +103,17 @@ class PokemonController extends Controller
                 $pokemonTypes->save();
             }
 
-            $pokemon->save($request->all());
+            //$pokemon->save($request->all());
             return redirect()
                 ->route("pokemon.index")
                 ->with("success", "Pokemon created successfully.");
-        }
-        else
-        {
+        } else {
             return redirect()
-            ->route("pokemon.index")
-            ->with("error", "Vous ne pouvez pas créer un Pokémon si vous n'êtes pas connnecté.");
+                ->route("pokemon.index")
+                ->with(
+                    "error",
+                    "Vous ne pouvez pas créer un Pokémon si vous n'êtes pas connnecté."
+                );
         }
     }
 
@@ -132,18 +138,20 @@ class PokemonController extends Controller
      */
     public function edit($id)
     {
-        if(!empty(session('username')))
-        {
+        /* This is checking if the user is logged in. If they are, they can edit a pokemon. If they
+         are not, they are redirected to the pokemon index page with an error message. */
+        if (!empty(session("username"))) {
             return view("pokemon.edit", [
                 "pokemon" => Pokemon::with("types")->findOrFail($id),
                 "types" => Type::all(),
             ]);
-        }
-        else
-        {
+        } else {
             return redirect()
-            ->route("pokemon.index")
-            ->with("error", "Vous ne pouvez pas modifier un Pokémon si vous n'êtes pas connnecté.");
+                ->route("pokemon.index")
+                ->with(
+                    "error",
+                    "Vous ne pouvez pas modifier un Pokémon si vous n'êtes pas connnecté."
+                );
         }
     }
 
@@ -156,8 +164,9 @@ class PokemonController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(!empty(session('username')))
-        {
+        /* This is checking if the user is logged in. If they are, they can edit a pokemon. If they
+         are not, they are redirected to the pokemon index page with an error message. */
+        if (!empty(session("username"))) {
             $request->validate([
                 "name" => "required",
                 "hp" => "required|integer|gte:0|lte:255",
@@ -170,6 +179,8 @@ class PokemonController extends Controller
                 "type_one" => "exists:types,id",
                 "type_two" => "nullable",
             ]);
+
+            // Updates all the values for said pokemon  in all of it's tables
             $pokemon = Pokemon::findOrfail($id)->update($request->all());
 
             $pokemonTypes = PokemonType::where("pokemon_id", $id)->first();
@@ -183,12 +194,13 @@ class PokemonController extends Controller
             return redirect()
                 ->route("pokemon.index")
                 ->with("success", "Pokemon updated successfully");
-        }
-        else
-        {
+        } else {
             return redirect()
-            ->route("pokemon.index")
-            ->with("error", "Vous ne pouvez pas modifier un Pokémon si vous n'êtes pas connnecté.");
+                ->route("pokemon.index")
+                ->with(
+                    "error",
+                    "Vous ne pouvez pas modifier un Pokémon si vous n'êtes pas connnecté."
+                );
         }
     }
 
@@ -200,33 +212,44 @@ class PokemonController extends Controller
      */
     public function destroy($id)
     {
-        if(!empty(session('username')))
-        {
+        /* This is checking if the user is logged in. If they are, they can delete a pokemon. If they
+         are not, they are redirected to the pokemon index page with an error message. */
+        if (!empty(session("username"))) {
             Pokemon::findOrfail($id)->delete();
             return redirect()
                 ->route("pokemon.index")
                 ->with("success", "Pokemon deleted successfully");
-        }
-        else
-        {
+        } else {
             return redirect()
-            ->route("pokemon.index")
-            ->with("error", "Vous ne pouvez pas supprimer un Pokémon si vous n'êtes pas connnecté.");
+                ->route("pokemon.index")
+                ->with(
+                    "error",
+                    "Vous ne pouvez pas supprimer un Pokémon si vous n'êtes pas connnecté."
+                );
         }
     }
 
+    /**
+     * The function takes the search data from the request and uses it to query the database for the
+     * pokemon with the name that matches the search data
+     *
+     * @param Request request The request object.
+     *
+     * @return \Illuminate\Http\Response A view with the pokemon and the search data.
+     */
     public function action(Request $request)
     {
         $data = $request->search;
 
         $pokemon = Pokemon::select("*")
-                        ->where('name', 'LIKE', '%'.$data.'%')
-                        ->with("types")->paginate(5);
+            ->where("name", "LIKE", "%" . $data . "%")
+            ->with("types")
+            ->paginate(5);
 
         return view("pokemon.index", compact("pokemon"))->with(
             "i",
-            (request()->input("page", 1) - 1) * 5
-        , ["search" => $data]);
+            (request()->input("page", 1) - 1) * 5,
+            ["search" => $data]
+        );
     }
-
 }
