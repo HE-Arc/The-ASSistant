@@ -20,11 +20,6 @@ body {
     transition: 0.2s ease-in-out;
 }
 
-.poke-style {
-    text-align: center;
-    margin-top: 1rem;
-    vertical-align: middle;
-}
 
 .three-col {
     column-count: 0;
@@ -71,20 +66,46 @@ body {
     box-sizing: border-box;
 }
 
+.poke-style {
+    display: grid;
+    grid-template-columns: auto auto;
+    text-align: center;
+    margin-top: 1rem;
+    vertical-align: middle;
+}
+
 .poke-type-color {
-    width: 2rem;
-    height: 2rem;
+    width: clamp(1rem, 2vw, 2rem);
+    height: clamp(1rem, 2vw, 2rem);
     outline: 0.1em solid var(--clr-heading);
     outline-offset: 0.1em;
     border-radius: 50%;
     margin-right: max(10px, 1em);
     vertical-align: middle;
-    transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out !important;
 }
 
-.poke-type-color:hover {
-    outline: 0.2em solid var(--clr-text);
-    outline-offset: 0em;
+.poke-style:hover>.poke-type-color {
+    outline: 0.15em solid var(--clr-text);
+    outline-offset: 0.05em;
+    border-radius: 35%;
+}
+
+.jump-to-content {
+    top: 20%;
+    left: 0;
+    position: absolute;
+    transform: translateX(-100%);
+    background: var(--clr-card-bg);
+    color: var(--clr-text);
+    height: 3rem;
+    padding: 0.5rem;
+    border-radius: 0 0.7rem 0.7rem 0;
+    transition: transform 0.35s;
+}
+
+.jump-to-content:focus {
+    transform: translateX(0%);
 }
 
 .type-name {

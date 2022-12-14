@@ -19,6 +19,7 @@
 </head>
 
 <body>
+    <a href="#maincontent" class="jump-to-content">Sauter au contenu</a>
     {{-- navbar-dark bg-dark --}}
     <nav class="navbar sticky-top navbar-expand-lg ">
         <div class="container-fluid">
@@ -84,34 +85,36 @@
             </div>
         </div>
     </nav>
-    <aside class="container-fluid right-aligned">
-        <form action="" class="theme-selector">
-            <fieldset>
-                <legend class="sr-only">Selection de thème</legend>
-                <label for="theme" class="sr-only">Thème clair</label>
-                <input type="radio" name="theme" id="theme-light" checked>
-                <label for="theme" class="sr-only">Thème gris</label>
-                <input type="radio" name="theme" id="theme-grey">
-                <label for="theme" class="sr-only">Thème sombre</label>
-                <input type="radio" name="theme" id="theme-dark">
-                <label for="theme" class="sr-only">Thème orange</label>
-                <input type="radio" name="theme" id="theme-orange">
-            </fieldset>
-        </form>
-    </aside>
-    <div class="container mt-3">
-        @if ($message = Session::get('success'))
-            <div class="alert alert-success">
-                <p>{{ $message }}</p>
-            </div>
-        @endif
-        @if ($message = Session::get('error'))
-            <div class="alert alert-danger">
-                <p>{{ $message }}</p>
-            </div>
-        @endif
-        @yield('content')
-    </div>
+    <main id="maincontent">
+        <aside class="container-fluid right-aligned">
+            <form action="" class="theme-selector">
+                <fieldset>
+                    <legend class="sr-only">Selection de thème</legend>
+                    <label for="theme" class="sr-only">Thème clair</label>
+                    <input type="radio" name="theme" id="theme-light" checked>
+                    <label for="theme" class="sr-only">Thème gris</label>
+                    <input type="radio" name="theme" id="theme-grey">
+                    <label for="theme" class="sr-only">Thème sombre</label>
+                    <input type="radio" name="theme" id="theme-dark">
+                    <label for="theme" class="sr-only">Thème orange</label>
+                    <input type="radio" name="theme" id="theme-orange">
+                </fieldset>
+            </form>
+        </aside>
+        <div class="container mt-3">
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success">
+                    <p>{{ $message }}</p>
+                </div>
+            @endif
+            @if ($message = Session::get('error'))
+                <div class="alert alert-danger">
+                    <p>{{ $message }}</p>
+                </div>
+            @endif
+            @yield('content')
+        </div>
+    </main>
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
