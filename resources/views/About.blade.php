@@ -1,8 +1,8 @@
 @extends('layout.app')
 @section('content')
-    <div style="display:block;margin-top:7%;margin-left: auto;margin-right: auto;width: 40%;">
-        <img src="images/HeArc.png" alt="He-Arc" style="width:500px;height:200px;margin-bottom:50px;">
-        <div style="display:block;margin-left: auto;margin-right: auto;width: 50%;">
+    <div class="about-container">
+        <img src="images/HeArc.png" alt="Logo He-Arc" class="about-image">
+        <div class="about-devs">
             <h1>Developpé par :</h1>
             <ul>
                 <li>Mayer Sarah</li>

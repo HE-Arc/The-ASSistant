@@ -152,6 +152,31 @@ h3 {
     border-radius: 1em 1em 1em 1em;
 }
 
+.about-container {
+    display: block;
+    margin-top: 7%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.about-image {
+    width: 100%;
+    aspect-ratio: 305 / 92;
+    background-color: whitesmoke;
+    border-radius: 1em;
+    margin-bottom: 50px;
+    padding: 0.5em;
+}
+
+.about-devs {
+    display: grid;
+    grid-template-rows: auto auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+}
+
 .navbar {
     background-color: var(--clr-card-bg) !important;
     color: var(--clr-heading) !important;
@@ -275,5 +300,36 @@ h3 {
         width: max(100px, 20%);
         margin-right: 14%;
         margin-left: 14%;
+    }
+
+    .about-container {
+        display: block;
+        margin-top: 7%;
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+    }
+
+    .about-image {
+        width: 100%;
+        aspect-ratio: 305 / 92;
+        background-color: whitesmoke;
+        border-radius: 1em;
+        margin-bottom: 50px;
+        padding: 0.5em;
+    }
+
+    .about-devs {
+        display: grid;
+        grid-template-rows: auto auto;
+        margin-left: auto;
+        margin-right: auto;
+        width: 75%;
+        justify-content: center;
+    }
+
+    .about-devs>ul {
+        align-self: center;
+        justify-self: center;
     }
 }
