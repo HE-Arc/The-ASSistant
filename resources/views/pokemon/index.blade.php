@@ -174,7 +174,7 @@
     @endif
     {!! $pokemon->links() !!}
     @if (!empty(session('username')))
-        <a href="{{ route('pokemon.create') }}" class="btn btn-success create-pokemon-button">
+        <a href="{{ route('pokemon.create') }}" class="btn btn-success btn-create-pokemon">
             + Nouveau Pokémon</a>
     @endif
 @endsection

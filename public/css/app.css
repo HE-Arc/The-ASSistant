@@ -13,14 +13,15 @@
 
 body {
     margin: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
     font-size: 1.25rem;
     line-height: 1.5;
     background: var(--clr-body-bg) !important;
     color: var(--clr-text) !important;
     transition: 0.2s ease-in-out;
 }
-
 
 .three-col {
     column-count: 0;
@@ -31,7 +32,7 @@ body {
     margin-right: 1%;
 }
 
-.three-col>.poke-style {
+.three-col > .poke-style {
     margin-top: 0 !important;
     margin-bottom: 1rem;
 }
@@ -40,7 +41,7 @@ body {
     margin-top: 1em;
 }
 
-.three-col>.poke-style {
+.three-col > .poke-style {
     display: flex;
 }
 
@@ -53,7 +54,7 @@ body {
     align-self: center;
 }
 
-.create-pokemon-button {
+.btn-create-pokemon {
     margin-top: 15px;
     position: sticky;
     bottom: 5vh;
@@ -69,7 +70,7 @@ body {
     margin-bottom: 1em;
 }
 
-.types-form>.form-select {
+.types-form > .form-select {
     width: 49%;
     margin: 0;
     box-sizing: border-box;
@@ -94,10 +95,9 @@ body {
     transition: 0.3s ease-in-out !important;
 }
 
-.poke-style:hover>.poke-type-color {
-    outline: 0.15em solid var(--clr-text);
-    outline-offset: 0.05em;
-    border-radius: 35%;
+.poke-style:hover > .poke-type-color {
+    outline: 0.2em solid var(--clr-heading);
+    outline-offset: 0em;
 }
 
 .jump-to-content {
@@ -123,7 +123,7 @@ body {
 }
 
 .table {
-    color: var(--clr-text) !important
+    color: var(--clr-text) !important;
 }
 
 .card {
@@ -191,10 +191,25 @@ h3 {
     color: var(--clr-text) !important;
 }
 
-.theme-selector>fieldset {
+.btn-back {
+    display: none;
+}
+
+.send-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.btn-send {
+    width: 55%;
+}
+
+.theme-selector > fieldset {
     border: 0;
     display: flex;
     gap: 2rem;
+    width: -moz-fit-content;
     width: fit-content;
     background: var(--clr-selector-back);
     padding: 1rem 3rem;
@@ -296,7 +311,7 @@ h3 {
         vertical-align: middle;
     }
 
-    .types-form>.form-select {
+    .types-form > .form-select {
         width: max(100px, 20%);
         margin-right: 14%;
         margin-left: 14%;
@@ -319,8 +334,23 @@ h3 {
         justify-content: center;
     }
 
-    .about-devs>ul {
+    .about-devs > ul {
         align-self: center;
         justify-self: center;
+    }
+
+    .btn-back {
+        display: flex;
+        position: absolute;
+        top: clamp(75px, 10%, 100px);
+        left: 5%;
+    }
+
+    .btn-back > a {
+        width: clamp(100px, 10%, 200px);
+    }
+
+    .btn-send {
+        width: 35%;
     }
 }
