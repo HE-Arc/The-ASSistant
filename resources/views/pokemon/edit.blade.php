@@ -46,7 +46,7 @@
                                     <label for="inputSpeed">Vitesse</label>
                                     <input type="number" name="speed" class="form-control" id="inputSpeed" min="1" max="255" value="{{ $pokemon->speed }}">
                                 </div>
-                                <div class="form-group col-6">
+                                <div class="form-group col-6 type-select-container">
                                     <label for="inputTypeOne">Type 1</label>
                                     <select name="type_one" id="inputTypeOne" class="form-select" aria-label="Pokemon type one">
                                         @foreach ($types as $type)
@@ -56,7 +56,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group col-6">
+                                <div class="form-group col-6 type-select-container">
                                     <label for="inputTypeTwo">Type 2</label>
                                     <select name="type_two" id="inputTypeTwo" class="form-select" aria-label="Pokemon type two">
                                         <option value="-1">None</option>
