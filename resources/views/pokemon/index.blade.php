@@ -180,11 +180,11 @@
             </div>
         @endforeach
     @endif
-    {!! $pokemon->links() !!}
     @if (!empty(session('username')))
         <div class="btn-create-container">
             <a href="{{ route('pokemon.create') }}" class="btn btn-success btn-create-pokemon">
                 + Nouveau Pokémon</a>
         </div>
     @endif
+    {!! $pokemon->links() !!}
 @endsection

@@ -16,6 +16,7 @@
 }
 
 body {
+    display: flexbox;
     margin: 0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
@@ -25,6 +26,16 @@ body {
     background: var(--clr-body-bg) !important;
     color: var(--clr-text) !important;
     transition: 0.2s ease-in-out;
+    min-height: 100vh;
+}
+
+.container > nav {
+    z-index: 0;
+    position: relative;
+    width: 100%;
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: center;
 }
 
 .btn-search {
@@ -90,7 +101,7 @@ body {
     align-self: center;
 }
 
-.btn-create-container{
+.btn-create-container {
     display: flex;
     position: sticky;
     bottom: 5vh;
@@ -99,7 +110,7 @@ body {
 }
 
 .btn-create-pokemon {
-    margin-top: 15px;
+    margin-bottom: max(1rem, 20px);
     position: sticky;
     font-size: 1.2rem;
     content: url("/svgs/plus-circle.svg");
@@ -232,6 +243,29 @@ h3 {
 .navbar-toggler-icon,
 .navbar-toggler {
     color: var(--clr-text) !important;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    background-color: var(--clr-card-bg);
+    display: flex;
+    justify-content: center;
+    padding-left: 15%;
+    padding-right: 15%;
+    height: -moz-fit-content;
+    height: fit-content;
+    width: 100%;
+    margin-top: auto;
+    z-index: -1;
+}
+
+.footer-img{
+    height: 7rem;
+    background-color: hsla(0, 0%, 85%, 0.22);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    margin: 1rem;
 }
 
 .btn-back {
@@ -427,7 +461,7 @@ h3 {
         margin-left: 0;
     }
 
-    .btn-create-pokemon{
+    .btn-create-pokemon {
         content: none;
     }
 }
