@@ -90,12 +90,19 @@ body {
     align-self: center;
 }
 
+.btn-create-container{
+    display: flex;
+    position: sticky;
+    bottom: 5vh;
+    width: 100%;
+    justify-content: center;
+}
+
 .btn-create-pokemon {
     margin-top: 15px;
     position: sticky;
-    bottom: 5vh;
-    left: 25%;
     font-size: 1.2rem;
+    content: url("/svgs/plus-circle.svg");
 }
 
 .horiz-bar {
@@ -418,5 +425,9 @@ h3 {
         width: clamp(7rem, 10vw, 10rem);
         margin-right: 1%;
         margin-left: 0;
+    }
+
+    .btn-create-pokemon{
+        content: none;
     }
 }

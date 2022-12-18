@@ -123,9 +123,9 @@
                                                 @if (count($pk->types) <= 1)
                                                     <a class="btn btn-info w-100 m-auto"
                                                         href="{{ route('attack', ['type1' => $pk->types[0]['id']]) }}">
-                                                @else
-                                                    <a class="btn btn-info w-100 m-auto"
-                                                        href="{{ route('attack', ['type1' => $pk->types[0]['id'], 'type2' => $pk->types[1]['id']]) }}">
+                                                    @else
+                                                        <a class="btn btn-info w-100 m-auto"
+                                                            href="{{ route('attack', ['type1' => $pk->types[0]['id'], 'type2' => $pk->types[1]['id']]) }}">
                                                 @endif
                                                 En attaque</a>
                                             </div>
@@ -133,11 +133,11 @@
                                                 @if (count($pk->types) <= 1)
                                                     <a class="btn btn-info w-100 m-auto"
                                                         href="{{ route('defense', ['type1' => $pk->types[0]['id']]) }}">
-                                                @else
-                                                    <a class="btn btn-info w-100 m-auto"
-                                                        href="{{ route('defense', ['type1' => $pk->types[0]['id'], 'type2' => $pk->types[1]['id']]) }}">
+                                                    @else
+                                                        <a class="btn btn-info w-100 m-auto"
+                                                            href="{{ route('defense', ['type1' => $pk->types[0]['id'], 'type2' => $pk->types[1]['id']]) }}">
                                                 @endif
-                                                    En défense
+                                                En défense
                                                 </a>
                                             </div>
                                             @if (!empty(session('username')))
@@ -182,7 +182,9 @@
     @endif
     {!! $pokemon->links() !!}
     @if (!empty(session('username')))
-        <a href="{{ route('pokemon.create') }}" class="btn btn-success btn-create-pokemon">
-            + Nouveau Pokémon</a>
+        <div class="btn-create-container">
+            <a href="{{ route('pokemon.create') }}" class="btn btn-success btn-create-pokemon">
+                + Nouveau Pokémon</a>
+        </div>
     @endif
 @endsection
