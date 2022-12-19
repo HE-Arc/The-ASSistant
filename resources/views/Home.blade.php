@@ -1,7 +1,7 @@
 @extends('layout.app')
 @section('content')
     <h1>The ASSistant</h1>
-    <img src="images/TheASSistant.png" alt="The ASSistant" style="width:120px;height:120px;">
+    <img src="images/TheASSistant.png" alt="The ASSistant" class="img-assistant">
     <h2>Contexte</h2>
     <p>
         The ASSistant est un outil de comparaison de Pokémon réalisé dans le cadre du cours de WEB de 3ème année,

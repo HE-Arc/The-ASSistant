@@ -29,7 +29,7 @@ body {
     min-height: 100vh;
 }
 
-.container > nav {
+.container>nav {
     z-index: 0;
     position: relative;
     width: 100%;
@@ -79,7 +79,7 @@ body {
     vertical-align: middle;
 }
 
-.three-col > .poke-style {
+.three-col>.poke-style {
     margin-top: 0 !important;
     margin-bottom: 1rem;
 }
@@ -88,7 +88,7 @@ body {
     margin-top: 1em;
 }
 
-.three-col > .poke-style {
+.three-col>.poke-style {
     display: flex;
 }
 
@@ -124,7 +124,7 @@ body {
     margin-bottom: 1em;
 }
 
-.types-form > .form-select {
+.types-form>.form-select {
     width: 49%;
     margin: 0;
     box-sizing: border-box;
@@ -149,7 +149,7 @@ body {
     transition: 0.3s ease-in-out !important;
 }
 
-.poke-style:hover > .poke-type-color {
+.poke-style:hover>.poke-type-color {
     outline: 0.2em solid var(--clr-heading);
     outline-offset: 0em;
 }
@@ -174,6 +174,11 @@ body {
 .type-name {
     text-align: center;
     vertical-align: middle;
+}
+
+.img-assistant {
+    aspect-ratio: 1/1;
+    width: max(120px, 20%);
 }
 
 .table {
@@ -276,7 +281,7 @@ h3 {
     flex-wrap: wrap;
 }
 
-.type-select-container > * {
+.type-select-container>* {
     width: 100%;
 }
 
@@ -294,7 +299,7 @@ h3 {
     width: 55%;
 }
 
-.theme-selector > fieldset {
+.theme-selector>fieldset {
     border: 0;
     display: flex;
     gap: 2rem;
@@ -424,7 +429,7 @@ h3 {
         vertical-align: middle;
     }
 
-    .types-form > .form-select {
+    .types-form>.form-select {
         width: max(100px, 20%);
         margin-right: 14%;
         margin-left: 14%;
@@ -447,7 +452,7 @@ h3 {
         justify-content: center;
     }
 
-    .about-devs > ul {
+    .about-devs>ul {
         align-self: center;
         justify-self: center;
     }
@@ -459,7 +464,7 @@ h3 {
         left: 5%;
     }
 
-    .btn-back > a {
+    .btn-back>a {
         width: clamp(100px, 10%, 200px);
     }
 
