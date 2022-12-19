@@ -13,10 +13,10 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ url('/js/cookieManager.js') }}"></script>
-    <script type="text/javascript" src="{{ url('/js/themeChanger.js') }}"></script>
-    <script type="text/javascript" src="{{ url('/js/search.js') }}"></script>
-    <link rel="stylesheet" href="{{ url('/css/app.css') }}">
+    <script type="text/javascript" src="/js/cookieManager.js"></script>
+    <script type="text/javascript" src="/js/themeChanger.js"></script>
+    <script type="text/javascript" src="/js/search.js"></script>
+    <link rel="stylesheet" href="/css/app.css">
 </head>
 
 <body>
