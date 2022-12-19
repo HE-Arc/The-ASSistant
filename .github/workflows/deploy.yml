@@ -1,0 +1,26 @@
+name: deployement
+
+concurrency: production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{secrets.ASSISTANT_SERVER}}
+          key: ${{secrets.ASSISTANT_SERVER_TOKEN}}
+          port: ${{secrets.ASSISTANT_SERVER_PORT}}
+          username: ${{secrets.ASSISTANT_SERVER_USER}}
+          script: |
+            cd project/The-ASSistant
+            sudo git restore .
+            sudo git pull --ff-only
+            echo If migrations were changed, remember to run php artisan migrate
