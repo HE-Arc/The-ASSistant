@@ -1,4 +1,4 @@
-name: deployement
+name: deployment
 
 concurrency: production
 
@@ -23,4 +23,4 @@ jobs:
             cd project/The-ASSistant
             sudo git restore .
             sudo git pull --ff-only
-            echo If migrations were changed, remember to run php artisan migrate
+            echo If migrations were changed, remember to run php artisan migrate.
