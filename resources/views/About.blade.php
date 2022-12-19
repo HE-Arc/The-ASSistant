@@ -1,7 +1,7 @@
 @extends('layout.app')
 @section('content')
     <div class="about-container">
-        <img src="images/HeArc.png" alt="Logo He-Arc" class="about-image">
+        <img src="/images/HeArc.png" alt="Logo He-Arc" class="about-image">
         <div class="about-devs">
             <h1>Developpé par :</h1>
             <ul>
