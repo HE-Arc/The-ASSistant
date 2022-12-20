@@ -20,16 +20,24 @@ class TypeController extends Controller
     {
         $types = Type::all();
 
-        if($request->type1 == null || ($request->type1 == -1 && $request->type2 == -1))
+        // check if the page should not display the affectation because the user just clicked on the page, or if wrong inputs
+        if($request->type1 == null || (
+            ($request->type1 <= -1 || $request->type1 > count($types)) &&
+            ($request->type2 <= -1 || $request->type2 > count($types))))
         {
             return view("types.attack", ["types" => $types, "type1" => $request->type1, "type2" => $request->type2, "defatt" => "attack"]);
         }
 
-        $specialDamages1 = DamageType::where('offensetype_id', '=', $request->type1)->get();
-        $specialDamages2 = [];
-        if($request->type2 != null && $request->type2 >= 0 && $request->type2 < count($types))
+        // add affectations of valid selected types on all the types
+        $specialDamages = [];
+        if($request->type1 >= 0 && $request->type1 <= count($types))
         {
-            $specialDamages2 = DamageType::where('offensetype_id', '=', $request->type2)->get(); // second type types
+            array_push($specialDamages, DamageType::where('offensetype_id', '=', $request->type1)->get());
+        }
+
+        if($request->type2 != null && $request->type2 >= 0 && $request->type2 <= count($types))
+        {
+            array_push($specialDamages, DamageType::where('offensetype_id', '=', $request->type2)->get()); // second type, can be null so prevented in condition
         }
 
         $damages = [
@@ -41,34 +49,22 @@ class TypeController extends Controller
 
         foreach($types as $type)
         {
-            $damage1 = 0; // by default, if one of the types of the pokémon don't have this type in their list, that means it is x1 power
-            if($request->type1 != null && $request->type1 >= 0 && $request->type1 < count($types))
+            $maxDamage = 0;
+            // for each type chosen by the user
+            foreach($specialDamages as $specialDamage)
             {
-                $damage1 = 1;
-                foreach($specialDamages1 as $damageType)
+                $damage = 1;
+                // for each type affected by the current type
+                foreach($specialDamage as $damageType)
                 {
-                    if($damageType->defensetype_id == $type->id)
+                    if($damageType->defensetype_id == $type->id) // if good type
                     {
-                        $damage1 = $damageType->damagemultiplier; // get the damage multiplier
+                        $damage = $damageType->damagemultiplier; // get the damage multiplier
                     }
                 }
+                $maxDamage = max($maxDamage, $damage); // keep the best damage
             }
-
-            // same for second type
-            $damage2 = 0;
-            if($request->type2 != null && $request->type2 >= 0 && $request->type2 < count($types))
-            {
-                $damage2 = 1;
-                foreach($specialDamages2 as $damageType)
-                {
-                    if($damageType->defensetype_id == $type->id)
-                    {
-                        $damage2 = $damageType->damagemultiplier;
-                    }
-                }
-            }
-            $currentDamage = max($damage1, $damage2); // we keep the type that makes the most damage
-            array_push($damages[strval($currentDamage)], $type);
+            array_push($damages[strval($maxDamage)], $type);
         }
         return view("types.attack", ["types" => $types, "type1" => $request->type1, "type2" => $request->type2, "damageTypes" => $damages, "defatt" => "attack"]);
     }
@@ -82,16 +78,24 @@ class TypeController extends Controller
     {
         $types = Type::all();
 
-        if($request->type1 == null)
+        // check if good parameters
+        if($request->type1 == null || (
+            ($request->type1 <= -1 || $request->type1 > count($types)) &&
+            ($request->type2 <= -1 || $request->type2 > count($types))))
         {
             return view("types.attack", ["types" => $types, "type1" => $request->type1, "type2" => $request->type2, "defatt" => "defense"]);
         }
 
-        $specialDamages1 = DamageType::where('defensetype_id', '=', $request->type1)->get();
-        $specialDamages2 = [];
-        if($request->type2 != null && $request->type2 >= 0 && $request->type2 < count($types))
+        // add affectations of valid selected types on all the types
+        $specialDamages = [];
+        if($request->type1 >= 0 && $request->type1 <= count($types))
         {
-            $specialDamages2 = DamageType::where('defensetype_id', '=', $request->type2)->get(); // second type types
+            array_push($specialDamages, DamageType::where('defensetype_id', '=', $request->type1)->get());
+        }
+
+        if($request->type2 != null && $request->type2 >= 0 && $request->type2 <= count($types))
+        {
+            array_push($specialDamages, DamageType::where('defensetype_id', '=', $request->type2)->get()); // second type, can be null so prevented in condition
         }
 
         $damages = [
@@ -105,29 +109,22 @@ class TypeController extends Controller
 
         foreach($types as $type)
         {
-            $damage1 = 1; // by default, if one of the types of the pokémon don't have this type in their list, that means it is x1 power
-            foreach($specialDamages1 as $damageType)
+            $maxDamage = 1;
+            // for each type chosen by the user
+            foreach($specialDamages as $specialDamage)
             {
-                if($damageType->offensetype_id == $type->id)
+                $damage = 1;
+                // for each type affected by the current type
+                foreach($specialDamage as $damageType)
                 {
-                    $damage1 = $damageType->damagemultiplier; // get the damage multiplier
-                }
-            }
-
-            // same for second type
-            $damage2 = 1;
-            if($request->type2 != null && $request->type2 >= 0 && $request->type2 < count($types))
-            {
-                foreach($specialDamages2 as $damageType)
-                {
-                    if($damageType->offensetype_id == $type->id)
+                    if($damageType->offensetype_id == $type->id) // if good type
                     {
-                        $damage2 = $damageType->damagemultiplier;
+                        $damage = $damageType->damagemultiplier; // get the damage multiplier
                     }
                 }
+                $maxDamage = $maxDamage * $damage; // keep the best damage
             }
-            $currentDamage = $damage1 * $damage2; // we keep the type that makes the most damage
-            array_push($damages[strval($currentDamage)], $type);
+            array_push($damages[strval($maxDamage)], $type);
         }
         return view("types.attack", ["types" => $types, "type1" => $request->type1, "type2" => $request->type2, "damageTypes" => $damages, "defatt" => "defense"]);
 
