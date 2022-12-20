@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: deploy
         uses: appleboy/ssh-action@master
         with:
@@ -19,6 +21,7 @@ jobs:
           key: ${{secrets.ASSISTANT_SERVER_TOKEN}}
           port: ${{secrets.ASSISTANT_SERVER_PORT}}
           username: ${{secrets.ASSISTANT_SERVER_USER}}
+          debug: true
           script: |
             cd project/The-ASSistant
             sudo git restore .
