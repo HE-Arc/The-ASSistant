@@ -1,4 +1,4 @@
-name: deployment
+name: Deployment
 
 concurrency: production
 
@@ -26,4 +26,5 @@ jobs:
             cd project/The-ASSistant
             sudo git restore .
             sudo git pull --ff-only
+            sudo composer install
             echo If migrations were changed, remember to run php artisan migrate.
