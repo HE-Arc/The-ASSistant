@@ -1,8 +1,17 @@
-/* This is a jQuery function that is called when the document is ready. It is waiting for the click
-event on the clearButton. When the click event is triggered, it will clear the value of the search
-input. */
+let old_id = 0;
+
 $(document).ready(function () {
+    /* Clearing the search bar when the clear button is clicked. */
     $("#clearButton").click(function () {
         $("#search").val('');
     });
+
+    /* Hiding the option that is selected in the first dropdown from the second dropdown. */
+    $("#inputTypeOne").change(function (e) {
+        $("#inputTypeTwo option[value=" + old_id + "]").show();
+        let typeOneId = $(this).find("option:selected", this).val();
+        old_id = typeOneId
+        $("#inputTypeTwo option[value=" + typeOneId + "]").hide();
+    });
 })
+
