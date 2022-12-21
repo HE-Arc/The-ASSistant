@@ -1,6 +1,11 @@
 let old_id = 0;
 
 $(document).ready(function () {
+    /* This is a function that hides the option that is selected in the first dropdown from the second
+    dropdown. */
+    let typeOneId = $(this).find("option:selected", this).val();
+    old_id = typeOneId
+    $("#inputTypeTwo option[value=" + typeOneId + "]").hide();
     /* Clearing the search bar when the clear button is clicked. */
     $("#clearButton").click(function () {
         $("#search").val('');
