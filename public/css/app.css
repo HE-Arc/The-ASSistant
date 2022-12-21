@@ -462,10 +462,11 @@ h3 {
         position: absolute;
         top: clamp(75px, 10%, 100px);
         left: 5%;
+        width: max(15rem, 10vw);
     }
 
     .btn-back>a {
-        width: clamp(100px, 10%, 200px);
+        width: 80%;
     }
 
     .btn-send {
