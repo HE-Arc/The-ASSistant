@@ -24,7 +24,7 @@ jobs:
           debug: true
           script: |
             cd project/The-ASSistant
-            sudo git restore .
-            sudo git pull --ff-only
-            sudo composer install
+            git restore .
+            git pull --ff-only
+            composer install
             echo If migrations were changed, remember to run php artisan migrate.
