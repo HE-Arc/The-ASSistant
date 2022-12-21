@@ -136,10 +136,11 @@ body {
 
 .poke-style {
     display: grid;
-    grid-template-columns: auto auto;
-    text-align: center;
+    grid-template-columns: 1fr 4fr;
+    text-align: left;
     margin-top: 1rem;
     vertical-align: middle;
+    min-width: 92px;
 }
 
 .poke-type-color {
