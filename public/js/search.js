@@ -1,11 +1,17 @@
-let old_id = 0;
+let oldTypeOne = 0;
+let oldTypeTwo = 0;
 
 $(document).ready(function () {
     /* This is a function that hides the option that is selected in the first dropdown from the second
     dropdown. */
-    let typeOneId = $(this).find("option:selected", this).val();
-    old_id = typeOneId
+    let typeOneId = $("#inputTypeOne").find("option:selected", this).val();
+    oldTypeOne = typeOneId
     $("#inputTypeTwo option[value=" + typeOneId + "]").hide();
+
+    let typeTwoId = $("#inputTypeTwo").find("option:selected", this).val();
+    oldTypeTwo = typeTwoId
+    $("#inputTypeOne option[value=" + typeTwoId + "]").hide();
+
     /* Clearing the search bar when the clear button is clicked. */
     $("#clearButton").click(function () {
         $("#search").val('');
@@ -13,10 +19,17 @@ $(document).ready(function () {
 
     /* Hiding the option that is selected in the first dropdown from the second dropdown. */
     $("#inputTypeOne").change(function (e) {
-        $("#inputTypeTwo option[value=" + old_id + "]").show();
+        $("#inputTypeTwo option[value=" + oldTypeOne + "]").show();
         let typeOneId = $(this).find("option:selected", this).val();
-        old_id = typeOneId
+        oldTypeOne = typeOneId
         $("#inputTypeTwo option[value=" + typeOneId + "]").hide();
+    });
+
+    $("#inputTypeTwo").change(function (e) {
+        $("#inputTypeOne option[value=" + oldTypeTwo + "]").show();
+        let typeTwoId = $("#inputTypeTwo").find("option:selected", this).val();
+        oldTypeTwo = typeTwoId
+        $("#inputTypeOne option[value=" + typeTwoId + "]").hide();
     });
 })
 
