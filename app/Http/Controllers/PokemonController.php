@@ -48,6 +48,21 @@ class PokemonController extends Controller
         }
     }
 
+    public function saveTypes($id, $type1, $type2)
+    {
+        $pokemonTypes = new PokemonType();
+        $pokemonTypes->pokemon_id = $id;
+        $pokemonTypes->type_id = $type1;
+        $pokemonTypes->save();
+
+        if ($type2 > 0) {
+            $pokemonTypes = new PokemonType();
+            $pokemonTypes->pokemon_id = $id;
+            $pokemonTypes->type_id = $type2;
+            $pokemonTypes->save();
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -89,19 +104,7 @@ class PokemonController extends Controller
                     ->with("error", "Erreur lors de la création du Pokémon");
             }
 
-            $id = $pokemon->id;
-
-            $pokemonTypes = new PokemonType();
-            $pokemonTypes->pokemon_id = $id;
-            $pokemonTypes->type_id = $request->type_one;
-            $pokemonTypes->save();
-
-            if ($request->type_two > 0) {
-                $pokemonTypes = new PokemonType();
-                $pokemonTypes->pokemon_id = $id;
-                $pokemonTypes->type_id = $request->type_two;
-                $pokemonTypes->save();
-            }
+            $this->saveTypes($pokemon->id, $request->type_one, $request->type_two);
 
             //$pokemon->save($request->all());
             return redirect()
@@ -182,15 +185,9 @@ class PokemonController extends Controller
 
             // Updates all the values for said pokemon  in all of it's tables
             $pokemon = Pokemon::findOrfail($id)->update($request->all());
+            PokemonType::where("pokemon_id", $id)->delete();
 
-            $pokemonTypes = PokemonType::where("pokemon_id", $id)->first();
-            $pokemonTypes->type_id = $request->type_one;
-            $pokemonTypes->save();
-            if ($request->type_two != -1) {
-                $pokemonTypes = PokemonType::where("pokemon_id", $id)->get()[1];
-                $pokemonTypes->type_id = $request->type_two;
-                $pokemonTypes->save();
-            }
+            $this->saveTypes($id, $request->type_one, $request->type_two);
             return redirect()
                 ->route("pokemon.index")
                 ->with("success", "Pokemon updated successfully");
