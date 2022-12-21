@@ -38,6 +38,10 @@ body {
     justify-content: center;
 }
 
+.btn{
+    font-weight: bold;
+}
+
 .btn-search {
     box-sizing: border-box;
     font-size: 1rem;
