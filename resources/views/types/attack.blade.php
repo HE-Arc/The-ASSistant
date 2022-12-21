@@ -39,11 +39,11 @@
                     <div class="damages card">
                         <div class="card-header">
                             <h3>
-                                @if ($key == 2 || $key==4)
+                                @if ($key == 2 || $key == 4)
                                     Super efficace
                                 @elseif ($key == 1)
                                     Efficace
-                                @elseif ($key == 0.5)
+                                @elseif ($key == 0.5 || $key == 0.25)
                                     Pas très efficace
                                 @elseif ($key == 0)
                                     Inefficace
